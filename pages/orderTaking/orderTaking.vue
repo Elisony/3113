@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<navs :userData="userData"></navs>
+		<navs :userData="userData" :UnreadMessage='UnreadMessage'></navs>
 		<view class="task-list" v-show="listShow">
 			<view v-for="(item, index) in orderProgress" :key="index" class="order-list">
 				<view class="order-list" v-if="item.status == 0">
@@ -74,7 +74,7 @@
 			</view>
 		</view>
 		<!-- <alert :QHeight="QHeight" :alertData="alertData"></alert> -->
-		<tab></tab>
+		<tab @RefreshList="RefreshList"></tab>
 	</view>
 </template>
 
@@ -108,12 +108,12 @@
 					button: '确定'
 				},
 				userData: {},
-				orderProgress: []
+				orderProgress: [],
+				UnreadMessage:''
 			}
 		},
 		onLoad: function(option) {
 			let then = this
-
 			//获取跳转参数
 			let userinfo = uni.getStorageSync('userinfo')
 			then.userData = userinfo
@@ -127,7 +127,23 @@
 					then.QHeight = height
 				}
 			})
-
+			//获取未读消息条数
+			uni.request({
+				url: "http://test.qd-happy.com/app_service",
+				method: "POST",
+				header: {
+					'Content-Type': "multipart/form-data",
+				},
+				data: {
+					interface: "users_getMsgNum",
+					data: {
+						user_id: this.userData.user_id,
+					}
+				},
+				success: (res) => {
+					this.UnreadMessage=res.data.data.num
+				}
+			})
 			//实时上报位置
 			then.getLocal()
 
@@ -139,6 +155,12 @@
 		},
 
 		methods: {
+			//刷新列表
+			RefreshList(val){
+				if(val){
+					this.getOrderProgress()
+				}
+			},
 			//实时上报骑手位置
 			getLocal() {
 				// var time =setInterval(function() {
@@ -147,7 +169,6 @@
 					uni.getLocation({
 						type: 'gcj02 ',
 						success: function(res) {
-							console.log(res, '哈哈哈')
 							uni.setStorageSync('userLocation', JSON.stringify(res));
 							// 这里请求是把数据传给后台
 							uni.request({
@@ -184,7 +205,6 @@
 			getOrderProgress() {
 				let then = this
 				if (uni.getStorageSync('userinfo')) {
-					console.log(this.userData.user_id, 'id啊')
 					uni.request({
 						url: "http://test.qd-happy.com/app_service",
 						method: "POST",
@@ -198,8 +218,8 @@
 							}
 						},
 						success: (res) => {
-							console.log(res.data.data.list, '？？？')
 							then.orderProgress = res.data.data.list
+							console.log(res)
 							if (res.data.data.list.length == 0) {
 								then.listNone = true
 								then.listShow = false

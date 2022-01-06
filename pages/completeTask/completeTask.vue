@@ -92,7 +92,6 @@
 							}
 						},
 						success: (res) => {
-							console.log(res,'这是已完成')
 							this.taskList = this.taskList.concat(res.data.data.list)
 							this.page += 1
 						}

@@ -19,17 +19,17 @@
 						</span>
 					</view>
 					<view  class="left-line2">
-						2136.20
+						{{WalletInfo.balance}}
 					</view>
 				</view>
 				<view class="info-right">
 					<view class="info-right-item1">
 						<p class="item-title">今日收益(元)</p>
-						<p class="item-content">+198</p>
+						<p class="item-content">+{{WalletInfo.work_sum}}</p>
 					</view>
 					<view class="info-right-item2">
 						<p class="item-title">累计收益(元)</p>
-						<p class="item-content">3652.96</p>
+						<p class="item-content">{{WalletInfo.account}}</p>
 					</view>
 				</view>
 			</view>
@@ -44,13 +44,38 @@
 	export default {
 		data() {
 			return {
-				
+				WalletInfo:{}
 			}
+		},
+		onLoad() {
+			this.getWallet()
 		},
 		methods: {
 			navigateBack(){
 				//uni.navigateBack()
 				detail:-1
+			},
+			//获取钱包详情页面
+			getWallet() {
+				let userData = uni.getStorageSync('userinfo')
+				if (userData) {
+					uni.request({
+						url: "http://test.qd-happy.com/app_service",
+						method: "POST",
+						header: {
+							'Content-Type': "multipart/form-data",
+						},
+						data: {
+							interface: "users_getAccountInfo",
+							data: {
+								user_id: userData.user_id
+							}
+						},
+						success: (res) => {
+							this.WalletInfo=res.data.data
+						}
+					})
+				}
 			}
 		}
 	}

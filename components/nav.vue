@@ -20,7 +20,7 @@
 		</view>
 		<navigator url="/pages/news/news" hover-class="navigator-hover" class="nav-right">
 			<view class="message-sup">
-				15
+				{{UnreadMessage}}
 			</view>
 			<view class="message-box">
 				<image src="/static/images/message.png" mode=""></image>
@@ -31,14 +31,14 @@
 
 <script>
 	export default {
-		props:['userData'],
+		props:['userData','UnreadMessage'],
 		data() {
 			return {
 				
 			};
 		},
 		onLoad() {
-			
+
 		},
 		methods:{
 			editStatus(){

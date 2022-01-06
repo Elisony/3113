@@ -1945,7 +1945,14 @@ var render = function() {
         ],
         1
       ),
-      _c("tab", { attrs: { _i: 37 } })
+      _c("tab", {
+        attrs: { _i: 37 },
+        on: {
+          RefreshList: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      })
     ],
     1
   )
@@ -2164,7 +2171,7 @@ var render = function() {
           _c(
             "v-uni-view",
             { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
-            [_vm._v("15")]
+            [_vm._v(_vm._$g(11, "t0-0"))]
           ),
           _c(
             "v-uni-view",
@@ -2216,7 +2223,7 @@ __webpack_require__.r(__webpack_exports__);
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 {
-  props: ["userData"],
+  props: ["userData", "UnreadMessage"],
   data: function data() {
     return {
       wxsProps: {} };
@@ -2362,7 +2369,15 @@ var render = function() {
     [
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
+        {
+          staticClass: _vm._$g(1, "sc"),
+          attrs: { _i: 1 },
+          on: {
+            click: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
         [
           _c(
             "v-uni-view",
@@ -2375,7 +2390,7 @@ var render = function() {
             1
           ),
           _c("span", { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } }, [
-            _vm._v("刷新列表")
+            _vm._v(_vm._$g(4, "t0-0"))
           ])
         ],
         1
@@ -2444,7 +2459,7 @@ __webpack_require__.r(__webpack_exports__);
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 {
-
+  props: ["title"],
   data: function data() {
     return {
       wxsProps: {} };
@@ -2499,7 +2514,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.tab-nav[data-v-4ca2a42a]{\n\twidth: 100%;\n\theight: 45px;\n\tbackground-color: #ccc;\n\tposition: fixed;\n\tbottom: 0px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.tab-left[data-v-4ca2a42a]{\n\twidth: 80%;\n\theight: 45px;\n\tbackground-color: #308bd1;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.tab-right[data-v-4ca2a42a]{\n\twidth: 20%;\n\theight: 45px;\n\tbackground-color: #fff;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n.left-refresh[data-v-4ca2a42a]{\n\twidth: 21px;\n\theight: 17px;\n}\n.left-refresh>uni-image[data-v-4ca2a42a]{\n\twidth: 100%;\n\theight: 100%;\n}\n.refresh-title[data-v-4ca2a42a]{\n\tfont-size: 15px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.right-task[data-v-4ca2a42a]{\n\twidth: 21px;\n\theight: 21px;\n}\n.right-task>uni-image[data-v-4ca2a42a]{\n\twidth: 100%;\n\theight: 100%;\n}\n.right-title[data-v-4ca2a42a]{\n\tfont-size: 10px;\n\tcolor: #333333;\n}\n", ""]);
+exports.push([module.i, "\n.tab-nav[data-v-4ca2a42a] {\n\twidth: 100%;\n\theight: 45px;\n\tbackground-color: #ccc;\n\tposition: fixed;\n\tbottom: 0px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.tab-left[data-v-4ca2a42a] {\n\twidth: 80%;\n\theight: 45px;\n\tbackground-color: #308bd1;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.tab-right[data-v-4ca2a42a] {\n\twidth: 20%;\n\theight: 45px;\n\tbackground-color: #fff;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n.left-refresh[data-v-4ca2a42a] {\n\twidth: 21px;\n\theight: 17px;\n}\n.left-refresh>uni-image[data-v-4ca2a42a] {\n\twidth: 100%;\n\theight: 100%;\n}\n.refresh-title[data-v-4ca2a42a] {\n\tfont-size: 15px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.right-task[data-v-4ca2a42a] {\n\twidth: 21px;\n\theight: 21px;\n}\n.right-task>uni-image[data-v-4ca2a42a] {\n\twidth: 100%;\n\theight: 100%;\n}\n.right-title[data-v-4ca2a42a] {\n\tfont-size: 10px;\n\tcolor: #333333;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -3504,18 +3519,7 @@ var render = function() {
       ),
       _c(
         "v-uni-view",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm._$g(6, "v-show"),
-              expression: "_$g(6,'v-show')"
-            }
-          ],
-          staticClass: _vm._$g(6, "sc"),
-          attrs: { _i: 6 }
-        },
+        { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
         [
           _c(
             "v-uni-view",
@@ -3590,137 +3594,87 @@ var render = function() {
             ],
             1
           ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(16, "sc"), attrs: { _i: 16 } },
-            [
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(17, "sc"), attrs: { _i: 17 } },
-                [
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(18, "sc"), attrs: { _i: 18 } },
-                    [_vm._v("客户编号： 090939")]
-                  ),
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } },
-                    [_vm._v("订单编号：43243242342424")]
-                  )
+          _vm._l(_vm._$g(16, "f"), function(item, index, $20, $30) {
+            return _c(
+              "v-uni-view",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm._$g("16-" + $30, "v-show"),
+                    expression: "_$g((\"16-\"+$30),'v-show')"
+                  }
                 ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
-                [
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(21, "sc"), attrs: { _i: 21 } },
-                    [_vm._v("+6.00元")]
-                  ),
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
-                    [_vm._v("2018年6月21日17:29:30")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(23, "sc"), attrs: { _i: 23 } },
-            [
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(24, "sc"), attrs: { _i: 24 } },
-                [
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(25, "sc"), attrs: { _i: 25 } },
-                    [_vm._v("客户编号： 090939")]
-                  ),
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(26, "sc"), attrs: { _i: 26 } },
-                    [_vm._v("订单编号：43243242342424")]
-                  )
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(27, "sc"), attrs: { _i: 27 } },
-                [
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
-                    [_vm._v("+6.00元")]
-                  ),
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(29, "sc"), attrs: { _i: 29 } },
-                    [_vm._v("2018年6月21日17:29:30")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(30, "sc"), attrs: { _i: 30 } },
-            [
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(31, "sc"), attrs: { _i: 31 } },
-                [
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(32, "sc"), attrs: { _i: 32 } },
-                    [_vm._v("客户编号： 090939")]
-                  ),
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(33, "sc"), attrs: { _i: 33 } },
-                    [_vm._v("订单编号：43243242342424")]
-                  )
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(34, "sc"), attrs: { _i: 34 } },
-                [
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } },
-                    [_vm._v("+6.00元")]
-                  ),
-                  _c(
-                    "p",
-                    { staticClass: _vm._$g(36, "sc"), attrs: { _i: 36 } },
-                    [_vm._v("2018年6月21日17:29:30")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
+                key: item,
+                staticClass: _vm._$g("16-" + $30, "sc"),
+                attrs: { _i: "16-" + $30 }
+              },
+              [
+                _c(
+                  "v-uni-view",
+                  {
+                    staticClass: _vm._$g("17-" + $30, "sc"),
+                    attrs: { _i: "17-" + $30 }
+                  },
+                  [
+                    _c(
+                      "p",
+                      {
+                        staticClass: _vm._$g("18-" + $30, "sc"),
+                        attrs: { _i: "18-" + $30 }
+                      },
+                      [_vm._v("客户编号： " + _vm._$g("18-" + $30, "t0-0"))]
+                    ),
+                    _c(
+                      "p",
+                      {
+                        staticClass: _vm._$g("19-" + $30, "sc"),
+                        attrs: { _i: "19-" + $30 }
+                      },
+                      [_vm._v("订单编号：" + _vm._$g("19-" + $30, "t0-0"))]
+                    )
+                  ],
+                  1
+                ),
+                _c(
+                  "v-uni-view",
+                  {
+                    staticClass: _vm._$g("20-" + $30, "sc"),
+                    attrs: { _i: "20-" + $30 }
+                  },
+                  [
+                    _c(
+                      "p",
+                      {
+                        staticClass: _vm._$g("21-" + $30, "sc"),
+                        attrs: { _i: "21-" + $30 }
+                      },
+                      [_vm._v("+" + _vm._$g("21-" + $30, "t0-0"))]
+                    ),
+                    _c(
+                      "p",
+                      {
+                        staticClass: _vm._$g("22-" + $30, "sc"),
+                        attrs: { _i: "22-" + $30 }
+                      },
+                      [_vm._v(_vm._$g("22-" + $30, "t0-0"))]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          })
         ],
-        1
+        2
       ),
-      _vm._$g(37, "i")
+      _vm._$g(23, "i")
         ? _c(
             "v-uni-view",
-            { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
-            [_vm._v("近一个月内没有交易")]
+            { staticClass: _vm._$g(23, "sc"), attrs: { _i: 23 } },
+            [_vm._v(_vm._$g(23, "t0-0") + "内没有交易")]
           )
         : _vm._e()
     ],
@@ -3815,7 +3769,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\nbody{\n\tbackground-color: #fafafa;\n}\n.content{\n\twidth: 100%;\n\theight: 100%;\n}\n.top-back{\n\twidth: 100%;\n\theight: 44px;\n\tpadding-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n\tbackground-color: #308bd1;\n}\n.top-left{\n\twidth: 36%;\n\theight: 30px;\n}\n.back-box{\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right{\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.detailed-info{\n\twidth: 100%;\n\theight: 100%;\n}\n.detailed-search{\n\twidth: 100%;\n\theight: 50px;\n\tbackground-color: #fff;\n\tborder-bottom: 1px solid #eee;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tmargin-bottom: 10px;\n}\n.search-left{\n\twidth: 22%;\n\theight: 30px;\n\ttext-align: left;\n\tborder-right: 1px solid #ccc;\n\tfont-size: 18px;\n\tcolor: #333;\n\tfont-weight: 600;\n\tline-height: 30px;\n}\n.search-right{\n\twidth: 62%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: space-around;\n}\n.search-right-title{\n\twidth: 20%;\n\theight: 30px;\n\tline-height: 30px;\n\tcolor: #ccc;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-end;\n}\n.search-right-select{\n\twidth: 80%;\n\theight: 30px;\n\tpadding-left: 10px;\n\tline-height: 30px;\n\tcolor: #999;\n}\n.search-right-more{\n\twidth: 7px;\n\theight: 13px;\n}\n.search-right-more>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.search-item{\n\twidth: 100%;\n\theight: 90px;\n\tbackground-color: #fff;\n\tborder-bottom: 1px solid #eee;\n\tmargin-bottom: 10px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n}\n.search-item-left{\n\twidth: 46%;\n\theight: 90px;\n}\n.search-item-right{\n\twidth: 46%;\n\theight: 90px;\n\ttext-align: right;\n}\n.search-left-line1{\n\tfont-size: 12px;\n\tcolor: #333;\n\tfont-weight: 600;\n\tline-height: 40px;\n\tpadding-top: 10px;\n}\n.search-left-line2{\n\tfont-size: 12px;\n\tcolor: #ccc;\n}\n.search-right-line1{\n\tfont-size: 12px;\n\tcolor: #333;\n\tfont-weight: 600;\n\tline-height: 40px;\n\tpadding-top: 10px;\n}\n.search-right-line2{\n\tfont-size: 12px;\n\tcolor: #ccc;\n}\n.search-none{\n\twidth: 100%;\n\theight: 50px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tfont-size: 18px;\n\tcolor: #ccc;\n\tmargin-top: 200px;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n\tbackground-color: #fafafa;\n}\n.content {\n\twidth: 100%;\n\theight: 100%;\n}\n.top-back {\n\twidth: 100%;\n\theight: 44px;\n\tpadding-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n\tbackground-color: #308bd1;\n}\n.top-left {\n\twidth: 36%;\n\theight: 30px;\n}\n.back-box {\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right {\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.detailed-info {\n\twidth: 100%;\n\theight: 100%;\n}\n.detailed-search {\n\twidth: 100%;\n\theight: 50px;\n\tbackground-color: #fff;\n\tborder-bottom: 1px solid #eee;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tmargin-bottom: 10px;\n}\n.search-left {\n\twidth: 22%;\n\theight: 30px;\n\ttext-align: left;\n\tborder-right: 1px solid #ccc;\n\tfont-size: 18px;\n\tcolor: #333;\n\tfont-weight: 600;\n\tline-height: 30px;\n}\n.search-right {\n\twidth: 62%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: space-around;\n}\n.search-right-title {\n\twidth: 20%;\n\theight: 30px;\n\tline-height: 30px;\n\tcolor: #ccc;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-end;\n}\n.search-right-select {\n\twidth: 80%;\n\theight: 30px;\n\tpadding-left: 10px;\n\tline-height: 30px;\n\tcolor: #999;\n}\n.search-right-more {\n\twidth: 7px;\n\theight: 13px;\n}\n.search-right-more>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.search-item {\n\twidth: 100%;\n\theight: 90px;\n\tbackground-color: #fff;\n\tborder-bottom: 1px solid #eee;\n\tmargin-bottom: 10px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n}\n.search-item-left {\n\twidth: 46%;\n\theight: 90px;\n}\n.search-item-right {\n\twidth: 46%;\n\theight: 90px;\n\ttext-align: right;\n}\n.search-left-line1 {\n\tfont-size: 12px;\n\tcolor: #333;\n\tfont-weight: 600;\n\tline-height: 40px;\n\tpadding-top: 10px;\n}\n.search-left-line2 {\n\tfont-size: 12px;\n\tcolor: #ccc;\n}\n.search-right-line1 {\n\tfont-size: 12px;\n\tcolor: #333;\n\tfont-weight: 600;\n\tline-height: 40px;\n\tpadding-top: 10px;\n}\n.search-right-line2 {\n\tfont-size: 12px;\n\tcolor: #ccc;\n}\n.search-none {\n\twidth: 100%;\n\theight: 50px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tfont-size: 18px;\n\tcolor: #ccc;\n\tmargin-top: 200px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -4000,7 +3954,7 @@ var render = function() {
                             staticClass: _vm._$g("11-" + $30, "sc"),
                             attrs: { _i: "11-" + $30 }
                           },
-                          [_vm._v("就近购买")]
+                          [_vm._v(_vm._$g("11-" + $30, "t0-0"))]
                         )
                       ],
                       1
@@ -4014,7 +3968,7 @@ var render = function() {
                     staticClass: _vm._$g("12-" + $30, "sc"),
                     attrs: { _i: "12-" + $30 }
                   },
-                  [_vm._v("你好，你提现的3000元已转至尾号为325的农业银行中...")]
+                  [_vm._v(_vm._$g("12-" + $30, "t0-0"))]
                 )
               ],
               1
@@ -4128,7 +4082,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\nbody{\n\tbackground-color: #fafafa;\n}\n.content{\n\twidth: 100%;\n\theight: 100%;\n}\n.top-back{\n\twidth: 100%;\n\theight: 44px;\n\tpadding-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n\tbackground-color: #308bd1;\n}\n.top-left{\n\twidth: 42%;\n\theight: 30px;\n}\n.back-box{\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right{\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.news-item{\n\twidth: 100%;\n\theight: 90px;\n\tbackground-color: #fff;\n\tborder-top: 1px solid #eee;\n\tborder-bottom: 1px solid #eee;\n\tmargin-top: 10px;\n\tposition: relative;\n}\n.news-item-info{\n\twidth: 100%;\n\theight: 100%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n.news-item-line1{\n\twidth: 92%;\n\theight: 40px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: flex-start;\n\tmargin-top: 10px;\n}\n.item-left{\n\twidth: 100%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n}\n.left-spot{\n\tfont-size: 30px;\n\tcolor: red;\n\tpadding-bottom: 20px;\n}\n.left-title{\n\tfont-size: 15px;\n\tcolor: #333333;\n\tpadding-left: 10px;\n}\n.news-item-line2{\n\twidth: 90%;\n\theight: 30px;\n\tfont-size: 12px;\n\tcolor: #999999;\n}\n.remove {\n\twidth: 80px;\n\theight: 100%;\n\tbackground-color: red;\n\tcolor: white;\n\tposition: absolute;\n\ttop: 0;\n\tright: -80px;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\tfont-size: 16px;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n\tbackground-color: #fafafa;\n}\n.content {\n\twidth: 100%;\n\theight: 100%;\n}\n.top-back {\n\twidth: 100%;\n\theight: 44px;\n\tpadding-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n\tbackground-color: #308bd1;\n}\n.top-left {\n\twidth: 42%;\n\theight: 30px;\n}\n.back-box {\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right {\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.news-item {\n\twidth: 100%;\n\theight: 90px;\n\tbackground-color: #fff;\n\tborder-top: 1px solid #eee;\n\tborder-bottom: 1px solid #eee;\n\tmargin-top: 10px;\n\tposition: relative;\n}\n.news-item-info {\n\twidth: 100%;\n\theight: 100%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n.news-item-line1 {\n\twidth: 92%;\n\theight: 40px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: flex-start;\n\tmargin-top: 10px;\n}\n.item-left {\n\twidth: 100%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n}\n.left-spot {\n\tfont-size: 30px;\n\tcolor: red;\n\tpadding-bottom: 20px;\n}\n.left-title {\n\tfont-size: 15px;\n\tcolor: #333333;\n\tpadding-left: 10px;\n}\n.news-item-line2 {\n\twidth: 90%;\n\theight: 30px;\n\tfont-size: 12px;\n\tcolor: #999999;\n}\n.remove {\n\twidth: 80px;\n\theight: 100%;\n\tbackground-color: red;\n\tcolor: white;\n\tposition: absolute;\n\ttop: 0;\n\tright: -80px;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\tfont-size: 16px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -4285,7 +4239,7 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
-                    [_vm._v("2136.20")]
+                    [_vm._v(_vm._$g(11, "t0-0"))]
                   )
                 ],
                 1
@@ -4306,7 +4260,7 @@ var render = function() {
                       _c(
                         "p",
                         { staticClass: _vm._$g(15, "sc"), attrs: { _i: 15 } },
-                        [_vm._v("+198")]
+                        [_vm._v("+" + _vm._$g(15, "t0-0"))]
                       )
                     ],
                     1
@@ -4323,7 +4277,7 @@ var render = function() {
                       _c(
                         "p",
                         { staticClass: _vm._$g(18, "sc"), attrs: { _i: 18 } },
-                        [_vm._v("3652.96")]
+                        [_vm._v(_vm._$g(18, "t0-0"))]
                       )
                     ],
                     1
@@ -5904,12 +5858,12 @@ var render = function() {
                       _c(
                         "v-uni-view",
                         { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
-                        [_vm._v("配送时间：40分钟")]
+                        [_vm._v("配送时间：" + _vm._$g(11, "t0-0"))]
                       ),
                       _c(
                         "v-uni-view",
                         { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
-                        [_vm._v("到达时间：2018年6月22日15:25:34")]
+                        [_vm._v("到达时间：" + _vm._$g(12, "t0-0"))]
                       )
                     ],
                     1
@@ -5983,7 +5937,7 @@ var render = function() {
                       _c(
                         "span",
                         { staticClass: _vm._$g(24, "sc"), attrs: { _i: 24 } },
-                        [_vm._v("20931")]
+                        [_vm._v(_vm._$g(24, "t0-0"))]
                       )
                     ],
                     1
@@ -6001,6 +5955,11 @@ var render = function() {
                               src: "/static/images/phone.png",
                               mode: "",
                               _i: 27
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
                             }
                           })
                         ],
@@ -6018,12 +5977,12 @@ var render = function() {
           _c(
             "v-uni-view",
             { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
-            [_vm._v("标题：需要一份感冒药、食品")]
+            [_vm._v("标题：" + _vm._$g(28, "t0-0"))]
           ),
           _c(
             "v-uni-view",
             { staticClass: _vm._$g(29, "sc"), attrs: { _i: 29 } },
-            [_vm._v("备注：到楼下打电话，别敲门")]
+            [_vm._v("备注：" + _vm._$g(29, "t0-0"))]
           )
         ],
         1
@@ -6039,11 +5998,19 @@ var render = function() {
               _c(
                 "v-uni-view",
                 { staticClass: _vm._$g(32, "sc"), attrs: { _i: 32 } },
-                [_vm._v("订单编号：274996818880393")]
+                [_vm._v("订单编号：" + _vm._$g(32, "t0-0"))]
               ),
               _c(
                 "v-uni-button",
-                { staticClass: _vm._$g(33, "sc"), attrs: { _i: 33 } },
+                {
+                  staticClass: _vm._$g(33, "sc"),
+                  attrs: { _i: 33 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
                 [_vm._v("复制")]
               )
             ],
@@ -6057,7 +6024,7 @@ var render = function() {
                 "v-uni-view",
                 { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } },
                 [
-                  _vm._v("订单编号："),
+                  _vm._v("订单标识："),
                   _c(
                     "v-uni-button",
                     { staticClass: _vm._$g(36, "sc"), attrs: { _i: 36 } },
@@ -6093,7 +6060,7 @@ var render = function() {
                   _c(
                     "span",
                     { staticClass: _vm._$g(41, "sc"), attrs: { _i: 41 } },
-                    [_vm._v("￥280")]
+                    [_vm._v("￥" + _vm._$g(41, "t0-0"))]
                   )
                 ],
                 1
@@ -6113,7 +6080,7 @@ var render = function() {
                   _c(
                     "span",
                     { staticClass: _vm._$g(44, "sc"), attrs: { _i: 44 } },
-                    [_vm._v("￥100")]
+                    [_vm._v("￥" + _vm._$g(44, "t0-0"))]
                   )
                 ],
                 1
@@ -6136,64 +6103,26 @@ var render = function() {
           _c(
             "v-uni-view",
             { staticClass: _vm._$g(47, "sc"), attrs: { _i: 47 } },
-            [
-              _c(
+            _vm._l(_vm._$g(48, "f"), function(item, index, $20, $30) {
+              return _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(48, "sc"), attrs: { _i: 48 } },
+                {
+                  key: item,
+                  staticClass: _vm._$g("48-" + $30, "sc"),
+                  attrs: { _i: "48-" + $30 }
+                },
                 [
                   _c("v-uni-image", {
                     attrs: {
-                      src: "/static/images/yaopin.jpg",
+                      src: _vm._$g("49-" + $30, "a-src"),
                       mode: "",
-                      _i: 49
-                    }
-                  })
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(50, "sc"), attrs: { _i: 50 } },
-                [
-                  _c("v-uni-image", {
-                    attrs: {
-                      src: "/static/images/yaopin.jpg",
-                      mode: "",
-                      _i: 51
-                    }
-                  })
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(52, "sc"), attrs: { _i: 52 } },
-                [
-                  _c("v-uni-image", {
-                    attrs: {
-                      src: "/static/images/yaopin.jpg",
-                      mode: "",
-                      _i: 53
-                    }
-                  })
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(54, "sc"), attrs: { _i: 54 } },
-                [
-                  _c("v-uni-image", {
-                    attrs: {
-                      src: "/static/images/yaopin.jpg",
-                      mode: "",
-                      _i: 55
+                      _i: "49-" + $30
                     }
                   })
                 ],
                 1
               )
-            ],
+            }),
             1
           )
         ],
@@ -6230,9 +6159,20 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/using-components.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!C:/Users/DELL/Desktop/3113/pages/orderFinish/orderFinish.vue?vue&type=script&lang=js&mpType=page ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/script.js):\nSyntaxError: Unexpected token, expected \";\" (127:16)\n    at Object._raise (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:746:17)\n    at Object.raiseWithData (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:739:17)\n    at Object.raise (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:733:17)\n    at Object.unexpected (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8807:16)\n    at Object.semicolon (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8789:40)\n    at Object.parseExpressionStatement (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11689:10)\n    at Object.parseExpressionStatement (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6630:26)\n    at Object.parseStatementContent (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11290:19)\n    at Object.parseStatementContent (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6575:18)\n    at Object.parseStatement (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11156:17)\n    at Object.parseBlockOrModuleBlockBody (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11731:25)\n    at Object.parseBlockBody (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11717:10)\n    at Object.parseBlock (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11701:10)\n    at Object.parseStatementContent (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11232:21)\n    at Object.parseStatementContent (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6575:18)\n    at Object.parseStatement (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11156:17)");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _purchasingAgent = _interopRequireDefault(__webpack_require__(/*! ../../components/purchasingAgent.vue */ 51));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+
+  data: function data() {
+    return {
+      wxsProps: {} };
+
+  },
+  components: {
+    'purchasingAgent': _purchasingAgent.default } };exports.default = _default;
 
 /***/ }),
 /* 139 */
@@ -6281,7 +6221,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\nbody{\n\tbackground-color: #fafafa;\n}\n.item5-img{\n\twidth: 80px;\n\theight: 80px;\n\tmargin: 0 5px;\n}\n.item5-img>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.info-item5{\n\twidth: 100%;\n\theight: 90px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-item4{\n\twidth: 92%;\n\theight: 30px;\n\ttext-align: left;\n\tline-height: 30px;\n\tfont-size: 15px;\n\tcolor: #333;\n\tfont-weight: 600;\n}\n.finish-voucher{\n\twidth: 100%;\n\theight: 140px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow:0px 5px 10px 0px #ccc;\n\tbackground-color: #fff;\n\tmargin-top: 8px;\n}\n.number-item-span{\n\tfont-size: 15px;\n\tfont-weight: 600;\n\tcolor: #d13043;\n}\n.number-item-button2{\n\twidth: 30%;\n\theight: 30px;\n\tbackground-color: #308bd1;\n\tcolor: #fff;\n\tline-height: 30px;\n\tborder-radius: 30px;\n}\n.number-item-button{\n\twidth: 20%;\n\theight: 30px;\n\tborder: 1px solid #eee;\n\tborder-radius: 5px;\n\tfont-size: 14px;\n\tline-height: 30px;\n\tcolor: #333;\n}\n.number-item-title{\n\tfont-size: 15px;\n\tcolor: #333;\n\tline-height: 40px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n}\n.number-item{\n\twidth: 92%;\n\theight: 40px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n\tborder-bottom: 1px solid #eee;\n}\n.finish-number{\n\twidth: 100%;\n\theight: 80px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow:0px 5px 10px 0px #ccc;\n\tbackground-color: #fff;\n\tmargin-top: 8px;\n}\n.order-title{\n\twidth: 90%;\n\theight: 40px;\n\tfont-size: 15px;\n\tcolor: #d13043;\n\tfont-weight: 600;\n\tmargin: 0 auto;\n\tline-height: 40px;\n}\n.item2-right-img{\n\twidth: 23px;\n\theight: 23px;\n}\n.item2-right-img>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.item2-left-title{\n\tfont-size: 12px;\n\tcolor: #308bd1;\n\tpadding: 5px;\n}\n.item2-left-img{\n\twidth: 23px;\n\theight: 23px;\n}\n.item2-left-img>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.info-top{\n\twidth: 92%;\n\theight: auto;\n}\n.item2-label1{\n\twidth: 50px;\n\theight: 20px;\n\tbackground-color: #308bd1;\n\tfont-size: 12px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 20px;\n\tborder-radius: 2px;\n}\n.item2-label2{\n\twidth: 75px;\n\theight: 20px;\n\tbackground-color: #aaaaaa;\n\tfont-size: 12px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 20px;\n\tborder-radius: 2px;\n\tmargin-left: 10px;\n}\n.item2-box{\n\twidth: 92%;\n\theight: 35px;\n\tborder-bottom: 1px solid #eee;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-item2{\n\twidth: 100%;\n\theight: auto;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.item2-left{\n\twidth: 74%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n\tfont-size: 12px;\n\tcolor: #333;\n}\n.item2-right{\n\twidth: 20%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n\tfont-size: 12px;\n\tcolor: #308bd1;\n}\n.finish-info{\n\twidth: 100%;\n\theight: 260px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow:0px 5px 10px 0px #ccc;\n\tbackground-color: #fff;\n}\n.content{\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\twidth: 100%;\n}\n.main-top{\n\twidth: 100%;\n\theight: 195px;\n\tbackground-color: #308bd1;\n}\n.top-back{\n\twidth: 100%;\n\theight: 44px;\n\tmargin-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n}\n.top-left{\n\twidth: 42%;\n\theight: 30px;\n}\n.back-box{\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right{\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.top-info{\n\twidth: 100%;\n\theight: 106px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-left{\n\twidth: 60%;\n\theight: 80px;\n\tdisplay: flex;\n\talign-items: center;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n}\n.info-right{\n\twidth: 30%;\n\theight: 60px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-end;\n}\n.left-line1{\n\theight: 30px;\n\tcolor: #fff;\n}\n.line1-name{\n\tfont-size: 24px;\n\tline-height: 30px;\n}\n.line1-title{\n\tfont-size: 17px;\n\tline-height: 30px;\n}\n.line1-arrive{\n\tfont-size: 12px;\n\tline-height: 20px;\n}\n.right-headimg{\n\twidth: 88px;\n\theight: 77px;\n}\n.right-headimg>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n\tbackground-color: #fafafa;\n}\n.item5-img {\n\twidth: 80px;\n\theight: 80px;\n\tmargin: 0 5px;\n}\n.item5-img>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.info-item5 {\n\twidth: 100%;\n\theight: 90px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-item4 {\n\twidth: 92%;\n\theight: 30px;\n\ttext-align: left;\n\tline-height: 30px;\n\tfont-size: 15px;\n\tcolor: #333;\n\tfont-weight: 600;\n}\n.finish-voucher {\n\twidth: 100%;\n\theight: 140px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow: 0px 5px 10px 0px #ccc;\n\tbackground-color: #fff;\n\tmargin-top: 8px;\n}\n.number-item-span {\n\tfont-size: 15px;\n\tfont-weight: 600;\n\tcolor: #d13043;\n}\n.number-item-button2 {\n\twidth: 30%;\n\theight: 30px;\n\tbackground-color: #308bd1;\n\tcolor: #fff;\n\tline-height: 30px;\n\tborder-radius: 30px;\n}\n.number-item-button {\n\twidth: 20%;\n\theight: 30px;\n\tborder: 1px solid #eee;\n\tborder-radius: 5px;\n\tfont-size: 14px;\n\tline-height: 30px;\n\tcolor: #333;\n}\n.number-item-title {\n\tfont-size: 15px;\n\tcolor: #333;\n\tline-height: 40px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n}\n.number-item {\n\twidth: 92%;\n\theight: 40px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n\tborder-bottom: 1px solid #eee;\n}\n.finish-number {\n\twidth: 100%;\n\theight: 80px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow: 0px 5px 10px 0px #ccc;\n\tbackground-color: #fff;\n\tmargin-top: 8px;\n}\n.order-title {\n\twidth: 90%;\n\tfont-size: 15px;\n\tcolor: #d13043;\n\tfont-weight: 600;\n\tline-height: 20px;\n}\n.item2-right-img {\n\twidth: 23px;\n\theight: 23px;\n}\n.item2-right-img>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.item2-left-title {\n\tfont-size: 12px;\n\tcolor: #308bd1;\n\tpadding: 5px;\n}\n.item2-left-img {\n\twidth: 23px;\n\theight: 23px;\n}\n.item2-left-img>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.info-top {\n\twidth: 92%;\n\theight: auto;\n}\n.item2-label1 {\n\twidth: 50px;\n\theight: 20px;\n\tbackground-color: #308bd1;\n\tfont-size: 12px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 20px;\n\tborder-radius: 2px;\n}\n.item2-label2 {\n\twidth: 75px;\n\theight: 20px;\n\tbackground-color: #aaaaaa;\n\tfont-size: 12px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 20px;\n\tborder-radius: 2px;\n\tmargin-left: 10px;\n}\n.item2-box {\n\twidth: 92%;\n\theight: 35px;\n\tborder-bottom: 1px solid #eee;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-item2 {\n\twidth: 100%;\n\theight: auto;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.item2-left {\n\twidth: 74%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n\tfont-size: 12px;\n\tcolor: #333;\n}\n.item2-right {\n\twidth: 20%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n\tfont-size: 12px;\n\tcolor: #308bd1;\n}\n.finish-info {\n\twidth: 100%;\n\theight: 260px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow: 0px 5px 10px 0px #ccc;\n\tbackground-color: #fff;\n}\n.content {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\twidth: 100%;\n}\n.main-top {\n\twidth: 100%;\n\theight: 195px;\n\tbackground-color: #308bd1;\n}\n.top-back {\n\twidth: 100%;\n\theight: 44px;\n\tmargin-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n}\n.top-left {\n\twidth: 42%;\n\theight: 30px;\n}\n.back-box {\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right {\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.top-info {\n\twidth: 100%;\n\theight: 106px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-left {\n\twidth: 60%;\n\theight: 80px;\n\tdisplay: flex;\n\talign-items: center;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n}\n.info-right {\n\twidth: 30%;\n\theight: 60px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-end;\n}\n.left-line1 {\n\theight: 30px;\n\tcolor: #fff;\n}\n.line1-name {\n\tfont-size: 24px;\n\tline-height: 30px;\n}\n.line1-title {\n\tfont-size: 17px;\n\tline-height: 30px;\n}\n.line1-arrive {\n\tfont-size: 12px;\n\tline-height: 20px;\n}\n.right-headimg {\n\twidth: 88px;\n\theight: 77px;\n}\n.right-headimg>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -7647,7 +7587,11 @@ var render = function() {
                           staticClass: _vm._$g("32-" + $30, "sc"),
                           attrs: { _i: "32-" + $30 }
                         },
-                        [_vm._v("超 +" + _vm._$g("32-" + $30, "t0-0"))]
+                        [
+                          _vm._v(
+                            "超\n\t\t\t\t\t+" + _vm._$g("32-" + $30, "t0-0")
+                          )
+                        ]
                       )
                     : _vm._e(),
                   _vm._$g("33-" + $30, "i")
@@ -7669,7 +7613,14 @@ var render = function() {
         }),
         1
       ),
-      _c("tab", { attrs: { _i: 34 } })
+      _c("tab", {
+        attrs: { _i: 34 },
+        on: {
+          RefreshList: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      })
     ],
     1
   )
@@ -7767,7 +7718,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\nbody{\n\tbackground-color: #fafafa;\n}\n.content{\n\twidth: 100%;\n\theight: 100%;\n}\n.order-list{\n\twidth: 100%;\n\theight: 380px;\n\tbox-shadow:0px 5px 10px 0px #ccc;\n\tmargin-bottom: 10px;\n}\n.list-top{\n\twidth: 100%;\n\theight: 47px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: space-around;\n\tborder-bottom: 1px solid #eee;\n}\n.top-more{\n\twidth: 30%;\n\theight: 47px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.more-img{\n\twidth: 27px;\n\theight: 27px;\n}\n.more-img>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.more-number{\n\tfont-size: 12px;\n\tcolor: #308bd1;\n\tpadding-left: 10px;\n}\n.top-left{\n\twidth: 20%;\n\theight: 47px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n\tfont-size: 24px;\n\tfont-weight: 600;\n\tcolor: #d13043;\n}\n.top-right{\n\twidth: 30%;\n\theight: 47px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n\tfont-size: 12px;\n\tcolor: #d13043;\n}\n.item-down-box{\n\twidth: 92%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.item-down{\n\twidth: 8px;\n\theight: 14px;\n}\n.item-down>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.down-title{\n\tfont-size: 12px;\n\tcolor: #ccc;\n\tpadding-left: 10px;\n}\n.left-spot2{\n\tfont-size: 30px;\n\tcolor: red;\n\tpadding-bottom: 20px;\n}\n.order-title{\n\twidth: 90%;\n\theight: 38px;\n\tfont-size: 15px;\n\tcolor: #d13043;\n\tfont-weight: 600;\n\tmargin: 0 auto;\n\tline-height: 38px;\n}\n.button-box{\n\twidth: 100%;\n\theight: 40px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tmargin-top: 10px;\n}\n.button-left{\n\twidth: 70%;\n\theight: 40px;\n}\n.button-right{\n\twidth: 30%;\n\theight: 40px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n}\n.button-buy{\n\twidth: 30%;\n\theight: 30px;\n\tline-height: 30px;\n\tbackground-color: #308bd1;\n\tborder-radius: 30px;\n\tcolor: #fff;\n\tfont-size: 15px;\n\tfloat: left;\n\tmargin-left: 18px;\n}\n.button-send{\n\twidth: 30%;\n\theight: 30px;\n\tline-height: 30px;\n\tbackground-color: #aaaaaa;\n\tborder-radius: 30px;\n\tcolor: #fff;\n\tfont-size: 15px;\n\tfloat: left;\n\tmargin-left: 10px;\n}\n.button-temporary{\n\twidth: 70%;\n\theight: 30px;\n\tline-height: 30px;\n\tbackground-color: #52d130;\n\tborder-radius: 30px;\n\tcolor: #fff;\n\tfont-size: 15px;\n}\n.button-ongoing{\n\twidth: 67%;\n\tbackground-color: #52d130;\n\tcolor: #fff;\n\tfont-size: 18px;\n\tfont-weight: 600;\n}\n.order-info{\n\twidth: 100%;\n\theight: 100%;\n\tbackground-color: #fff;\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\tmargin-bottom: 50px;\n}\n.info-box{\n\twidth: 94%;\n\theight: 125px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-left{\n\twidth: 30%;\n\theight: 100px;\n\tposition: relative;\n}\n.info-center{\n\twidth: 40%;\n\theight: 100px;\n\tdisplay: flex;\n\tflex-direction: column;\n}\n.info-right{\n\twidth: 28%;\n\theight: 100px;\n}\n.info-left-title{\n\tposition: absolute;\n\twidth: 50px;\n\theight: 20px;\n\tbackground-color: #308bd1;\n\tfont-size: 10px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 20px;\n\tborder-radius: 0 5px 5px 5px;\n\tz-index: 30;\n}\n.info-left-title2{\n\tposition: absolute;\n\twidth: 50px;\n\theight: 20px;\n\tbackground-color: #52d130;\n\tfont-size: 10px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 20px;\n\tborder-radius: 0 5px 5px 5px;\n\tz-index: 30;\n}\n.info-left-img{\n\twidth: 106px;\n\theight: 100px;\n}\n.info-left-img>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.info-center-font1{\n\tfont-size: 15px;\n\tcolor: #333333;\n}\n.info-center-hr{\n\tpadding-top: 10px;\n}\n.info-center-font2{\n\tfont-size: 15px;\n\tcolor: #999999;\n\tpadding-top: 2px;\n}\n.info-right-button1{\n\twidth: 100%;\n\theight: 30px;\n\tbackground-color: #d13043;\n\tfont-size: 15px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 30px;\n\tborder-radius: 30px;\n\tmargin-top: 30px;\n\twhite-space: nowrap\n}\n.info-right-button2{\n\twidth: 100%;\n\theight: 30px;\n\tbackground-color: #308bd1;\n\tfont-size: 15px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 30px;\n\tmargin-top: 5px;\n\tborder-radius: 30px;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n\tbackground-color: #fafafa;\n}\n.content {\n\twidth: 100%;\n\theight: 100%;\n}\n.order-list {\n\twidth: 100%;\n\theight: 380px;\n\tbox-shadow: 0px 5px 10px 0px #ccc;\n\tmargin-bottom: 10px;\n}\n.list-top {\n\twidth: 100%;\n\theight: 47px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: space-around;\n\tborder-bottom: 1px solid #eee;\n}\n.top-more {\n\twidth: 30%;\n\theight: 47px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.more-img {\n\twidth: 27px;\n\theight: 27px;\n}\n.more-img>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.more-number {\n\tfont-size: 12px;\n\tcolor: #308bd1;\n\tpadding-left: 10px;\n}\n.top-left {\n\twidth: 20%;\n\theight: 47px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n\tfont-size: 24px;\n\tfont-weight: 600;\n\tcolor: #d13043;\n}\n.top-right {\n\twidth: 30%;\n\theight: 47px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n\tfont-size: 12px;\n\tcolor: #d13043;\n}\n.item-down-box {\n\twidth: 92%;\n\theight: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.item-down {\n\twidth: 8px;\n\theight: 14px;\n}\n.item-down>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.down-title {\n\tfont-size: 12px;\n\tcolor: #ccc;\n\tpadding-left: 10px;\n}\n.left-spot2 {\n\tfont-size: 30px;\n\tcolor: red;\n\tpadding-bottom: 20px;\n}\n.order-title {\n\twidth: 90%;\n\theight: 38px;\n\tfont-size: 15px;\n\tcolor: #d13043;\n\tfont-weight: 600;\n\tmargin: 0 auto;\n\tline-height: 38px;\n}\n.button-box {\n\twidth: 100%;\n\theight: 40px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tmargin-top: 10px;\n}\n.button-left {\n\twidth: 70%;\n\theight: 40px;\n}\n.button-right {\n\twidth: 30%;\n\theight: 40px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n}\n.button-buy {\n\twidth: 30%;\n\theight: 30px;\n\tline-height: 30px;\n\tbackground-color: #308bd1;\n\tborder-radius: 30px;\n\tcolor: #fff;\n\tfont-size: 15px;\n\tfloat: left;\n\tmargin-left: 18px;\n}\n.button-send {\n\twidth: 30%;\n\theight: 30px;\n\tline-height: 30px;\n\tbackground-color: #aaaaaa;\n\tborder-radius: 30px;\n\tcolor: #fff;\n\tfont-size: 15px;\n\tfloat: left;\n\tmargin-left: 10px;\n}\n.button-temporary {\n\twidth: 70%;\n\theight: 30px;\n\tline-height: 30px;\n\tbackground-color: #52d130;\n\tborder-radius: 30px;\n\tcolor: #fff;\n\tfont-size: 15px;\n}\n.button-ongoing {\n\twidth: 67%;\n\tbackground-color: #52d130;\n\tcolor: #fff;\n\tfont-size: 18px;\n\tfont-weight: 600;\n}\n.order-info {\n\twidth: 100%;\n\theight: 100%;\n\tbackground-color: #fff;\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\tmargin-bottom: 50px;\n}\n.info-box {\n\twidth: 94%;\n\theight: 125px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-left {\n\twidth: 30%;\n\theight: 100px;\n\tposition: relative;\n}\n.info-center {\n\twidth: 40%;\n\theight: 100px;\n\tdisplay: flex;\n\tflex-direction: column;\n}\n.info-right {\n\twidth: 28%;\n\theight: 100px;\n}\n.info-left-title {\n\tposition: absolute;\n\twidth: 50px;\n\theight: 20px;\n\tbackground-color: #308bd1;\n\tfont-size: 10px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 20px;\n\tborder-radius: 0 5px 5px 5px;\n\tz-index: 30;\n}\n.info-left-title2 {\n\tposition: absolute;\n\twidth: 50px;\n\theight: 20px;\n\tbackground-color: #52d130;\n\tfont-size: 10px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 20px;\n\tborder-radius: 0 5px 5px 5px;\n\tz-index: 30;\n}\n.info-left-img {\n\twidth: 106px;\n\theight: 100px;\n}\n.info-left-img>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.info-center-font1 {\n\tfont-size: 15px;\n\tcolor: #333333;\n}\n.info-center-hr {\n\tpadding-top: 10px;\n}\n.info-center-font2 {\n\tfont-size: 15px;\n\tcolor: #999999;\n\tpadding-top: 2px;\n}\n.info-right-button1 {\n\twidth: 100%;\n\theight: 30px;\n\tbackground-color: #d13043;\n\tfont-size: 15px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 30px;\n\tborder-radius: 30px;\n\tmargin-top: 30px;\n\twhite-space: nowrap\n}\n.info-right-button2 {\n\twidth: 100%;\n\theight: 30px;\n\tbackground-color: #308bd1;\n\tfont-size: 15px;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 30px;\n\tmargin-top: 5px;\n\tborder-radius: 30px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -7880,11 +7831,7 @@ var render = function() {
                     { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
                     [
                       _c("v-uni-image", {
-                        attrs: {
-                          src: "/static/images/back.png",
-                          mode: "",
-                          _i: 5
-                        }
+                        attrs: { src: _vm._$g(5, "a-src"), mode: "", _i: 5 }
                       })
                     ],
                     1
@@ -7915,12 +7862,12 @@ var render = function() {
                       _c(
                         "span",
                         { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
-                        [_vm._v("小童")]
+                        [_vm._v(_vm._$g(10, "t0-0"))]
                       ),
                       _c(
                         "span",
                         { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
-                        [_vm._v("自营配送员")]
+                        [_vm._v(_vm._$g(11, "t0-0"))]
                       )
                     ],
                     1
@@ -7928,7 +7875,7 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
-                    [_vm._v("13455668821")]
+                    [_vm._v(_vm._$g(12, "t0-0"))]
                   )
                 ],
                 1
@@ -8018,7 +7965,7 @@ var render = function() {
               _c(
                 "v-uni-view",
                 { staticClass: _vm._$g(24, "sc"), attrs: { _i: 24 } },
-                [_vm._v("15999")]
+                [_vm._v(_vm._$g(24, "t0-0"))]
               )
             ],
             1
@@ -8062,7 +8009,7 @@ var render = function() {
                       _c(
                         "p",
                         { staticClass: _vm._$g(32, "sc"), attrs: { _i: 32 } },
-                        [_vm._v("19")]
+                        [_vm._v(_vm._$g(32, "t0-0"))]
                       )
                     ],
                     1
@@ -8093,7 +8040,7 @@ var render = function() {
                       _c(
                         "p",
                         { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
-                        [_vm._v("100KM")]
+                        [_vm._v(_vm._$g(37, "t0-0"))]
                       )
                     ],
                     1
@@ -8124,7 +8071,7 @@ var render = function() {
                       _c(
                         "p",
                         { staticClass: _vm._$g(42, "sc"), attrs: { _i: 42 } },
-                        [_vm._v("189元")]
+                        [_vm._v(_vm._$g(42, "t0-0"))]
                       )
                     ],
                     1
@@ -8245,7 +8192,15 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(59, "sc"), attrs: { _i: 59 } },
+            {
+              staticClass: _vm._$g(59, "sc"),
+              attrs: { _i: 59 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
             [
               _c(
                 "v-uni-view",
@@ -8392,7 +8347,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.content {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\twidth: 100%;\n}\n.main-top{\n\twidth: 100%;\n\theight: 195px;\n\tbackground-color: #308bd1;\n\tborder-radius: 0 0 15px 15px;\n}\n.top-back{\n\twidth: 100%;\n\theight: 44px;\n\tmargin-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n}\n.top-left{\n\twidth: 42%;\n\theight: 30px;\n}\n.back-box{\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right{\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.top-info{\n\twidth: 100%;\n\theight: 106px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-left{\n\twidth: 40%;\n\theight: 60px;\n}\n.info-right{\n\twidth: 40%;\n\theight: 60px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-end;\n}\n.left-line1{\n\theight: 30px;\n\tdisplay: flex;\n\talign-items: center;\n\tflex-direction: row;\n\tcolor: #fff;\n}\n.line1-name{\n\tfont-size: 16px;\n}\n.line1-title{\n\tfont-size: 12px;\n\tpadding-left: 10px;\n\tpadding-top: 5px;\n}\n.left-line2{\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 12px;\n}\n.right-headimg{\n\twidth: 60px;\n\theight: 60px;\n\tborder-radius: 50%;\n\toverflow: hidden;\n}\n.right-headimg>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.right-more{\n\twidth: 7px;\n\theight: 13px;\n\tline-height: 60px;\n\tmargin-left: 10px;\n}\n.right-more>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.main-center{\n\twidth: 100%;\n\theight: 300px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tposition: relative;\n\tz-index: 19;\n}\n.wallet-box{\n\twidth: 94%;\n\theight: 50px;\n\tposition: absolute;\n\ttop: -25px;\n\tz-index: 20;\n\tbackground-color: #fff;\n\tborder-radius: 5px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tborder: 1px solid #f1f1f1;\n\tbox-shadow:0px 15px 10px -15px #ccc;\n}\n.wallet-left{\n\twidth: 43%;\n\theight: 50px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.wallet-right{\n\twidth: 43%;\n\theight: 50px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tfont-size: 18px;\n\tcolor: #333;\n}\n.wallet-img-box{\n\twidth: 24px;\n\theight: 28px;\n}\n.wallet-img-box>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.wallet-title{\n\tfont-size: 15px;\n\tcolor: #333;\n\tpadding-left: 10px;\n\tfont-weight: 600;\n}\n.achievement{\n\twidth: 94%;\n\theight: 152px;\n\tbackground-color: #fff;\n\tborder-radius: 5px;\n\tmargin-top: 30px;\n\tbox-shadow:0px 15px 10px -15px #ccc;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tborder: 1px solid #f1f1f1;\n}\n.achievement-title{\n\twidth: 67%;\n\theight: 50px;\n\tfont-size: 15px;\n\tcolor: #333;\n\tfont-weight: 600;\n\tline-height: 50px;\n}\n.achievement-info{\n\twidth: 86%;\n\theight: 90px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: space-between;\n}\n.ach-info-item{\n\twidth: 30%;\n\theight: 75px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.item-img-box{\n\twidth: 24px;\n\theight: 28px;\n}\n.item-img-box>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.item-font{\n\tfont-size: 15px;\n\tcolor: #333;\n\tline-height: 30px;\n}\n.item-num{\n\tfont-size: 15px;\n\tcolor: #333;\n\tfont-weight: 600;\n}\n.service{\n\twidth: 94%;\n\theight: 50px;\n\tbackground-color: #fff;\n\tborder-radius: 5px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow:0px 15px 10px -15px #ccc;\n\tmargin-top: 5px;\n\tborder: 1px solid #f1f1f1;\n}\n.more-box{\n\twidth: 7px;\n\theight: 13px;\n}\n.more-box>uni-image{\n\twidth: 100%;\n\theight: 100%;\n\tdisplay: block;\n}\n", ""]);
+exports.push([module.i, "\n.content {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\twidth: 100%;\n}\n.main-top {\n\twidth: 100%;\n\theight: 195px;\n\tbackground-color: #308bd1;\n\tborder-radius: 0 0 15px 15px;\n}\n.top-back {\n\twidth: 100%;\n\theight: 44px;\n\tmargin-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n}\n.top-left {\n\twidth: 42%;\n\theight: 30px;\n}\n.back-box {\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right {\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.top-info {\n\twidth: 100%;\n\theight: 106px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-left {\n\twidth: 40%;\n\theight: 60px;\n}\n.info-right {\n\twidth: 40%;\n\theight: 60px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-end;\n}\n.left-line1 {\n\theight: 30px;\n\tdisplay: flex;\n\talign-items: center;\n\tflex-direction: row;\n\tcolor: #fff;\n}\n.line1-name {\n\tfont-size: 16px;\n}\n.line1-title {\n\tfont-size: 12px;\n\tpadding-left: 10px;\n\tpadding-top: 5px;\n}\n.left-line2 {\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 12px;\n}\n.right-headimg {\n\twidth: 60px;\n\theight: 60px;\n\tborder-radius: 50%;\n\toverflow: hidden;\n}\n.right-headimg>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.right-more {\n\twidth: 7px;\n\theight: 13px;\n\tline-height: 60px;\n\tmargin-left: 10px;\n}\n.right-more>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.main-center {\n\twidth: 100%;\n\theight: 300px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tposition: relative;\n\tz-index: 19;\n}\n.wallet-box {\n\twidth: 94%;\n\theight: 50px;\n\tposition: absolute;\n\ttop: -25px;\n\tz-index: 20;\n\tbackground-color: #fff;\n\tborder-radius: 5px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tborder: 1px solid #f1f1f1;\n\tbox-shadow: 0px 15px 10px -15px #ccc;\n}\n.wallet-left {\n\twidth: 43%;\n\theight: 50px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.wallet-right {\n\twidth: 43%;\n\theight: 50px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tfont-size: 18px;\n\tcolor: #333;\n}\n.wallet-img-box {\n\twidth: 24px;\n\theight: 28px;\n}\n.wallet-img-box>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.wallet-title {\n\tfont-size: 15px;\n\tcolor: #333;\n\tpadding-left: 10px;\n\tfont-weight: 600;\n}\n.achievement {\n\twidth: 94%;\n\theight: 152px;\n\tbackground-color: #fff;\n\tborder-radius: 5px;\n\tmargin-top: 30px;\n\tbox-shadow: 0px 15px 10px -15px #ccc;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tborder: 1px solid #f1f1f1;\n}\n.achievement-title {\n\twidth: 67%;\n\theight: 50px;\n\tfont-size: 15px;\n\tcolor: #333;\n\tfont-weight: 600;\n\tline-height: 50px;\n}\n.achievement-info {\n\twidth: 86%;\n\theight: 90px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: space-between;\n}\n.ach-info-item {\n\twidth: 30%;\n\theight: 75px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.item-img-box {\n\twidth: 24px;\n\theight: 28px;\n}\n.item-img-box>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.item-font {\n\tfont-size: 15px;\n\tcolor: #333;\n\tline-height: 30px;\n}\n.item-num {\n\tfont-size: 15px;\n\tcolor: #333;\n\tfont-weight: 600;\n}\n.service {\n\twidth: 94%;\n\theight: 50px;\n\tbackground-color: #fff;\n\tborder-radius: 5px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow: 0px 15px 10px -15px #ccc;\n\tmargin-top: 5px;\n\tborder: 1px solid #f1f1f1;\n}\n.more-box {\n\twidth: 7px;\n\theight: 13px;\n}\n.more-box>uni-image {\n\twidth: 100%;\n\theight: 100%;\n\tdisplay: block;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

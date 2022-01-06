@@ -1,11 +1,11 @@
 <template>
 	<view class="tab-nav">
-		<view class="tab-left">
+		<view class="tab-left" @click="RefreshList">
 			<view class="left-refresh">
 				<image src="/static/images/refresh.png" mode=""></image>
 			</view>
 			<span class="refresh-title">
-				刷新列表
+				{{title?title:'刷新列表'}}
 			</span>
 		</view>
 		<navigator url="/pages/myTask/myTask" hover-class="navigator-hover" class="tab-right">
@@ -19,16 +19,26 @@
 
 <script>
 	export default {
+		props: ['title'],
 		data() {
 			return {
-				
+				nextList: ['接单', '到达取货点', '到达送货点', '已交付']
 			};
+		},
+		methods: {
+			RefreshList() {
+				if (this.title) {
+					this.$emit('RefreshList', this.title)
+				} else {
+					this.$emit('RefreshList', true)
+				}
+			}
 		}
 	}
 </script>
 
 <style>
-	.tab-nav{
+	.tab-nav {
 		width: 100%;
 		height: 45px;
 		background-color: #ccc;
@@ -38,7 +48,8 @@
 		flex-direction: row;
 		align-items: center;
 	}
-	.tab-left{
+
+	.tab-left {
 		width: 80%;
 		height: 45px;
 		background-color: #308bd1;
@@ -47,7 +58,8 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.tab-right{
+
+	.tab-right {
 		width: 20%;
 		height: 45px;
 		background-color: #fff;
@@ -56,28 +68,34 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.left-refresh{
+
+	.left-refresh {
 		width: 21px;
 		height: 17px;
 	}
-	.left-refresh>image{
+
+	.left-refresh>image {
 		width: 100%;
 		height: 100%;
 	}
-	.refresh-title{
+
+	.refresh-title {
 		font-size: 15px;
 		color: #fff;
 		padding-left: 10px;
 	}
-	.right-task{
+
+	.right-task {
 		width: 21px;
 		height: 21px;
 	}
-	.right-task>image{
+
+	.right-task>image {
 		width: 100%;
 		height: 100%;
 	}
-	.right-title{
+
+	.right-title {
 		font-size: 10px;
 		color: #333333;
 	}

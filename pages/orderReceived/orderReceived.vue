@@ -15,7 +15,7 @@
 					￥{{ orderInfo.account }}
 				</view>
 				<view class="top-right">
-					
+
 				</view>
 			</view>
 			<dispatchingInfo :item="orderInfo"></dispatchingInfo>
@@ -36,10 +36,12 @@
 			</view>
 		</view>
 		<view class="order-info">
-			<navigator v-for="(raw, key) in orderInfo.info_list" :url="'/pages/details/details?info_id='+raw.info_id+'&order_id='+orderInfo.order_id"  hover-class="navigator-hover" class="info-box" :key="key">
+			<navigator v-for="(raw, key) in orderInfo.info_list"
+				:url="'/pages/details/details?info_id='+raw.info_id+'&order_id='+orderInfo.order_id"
+				hover-class="navigator-hover" class="info-box" :key="key">
 				<view class="info-left">
 					<view class="info-left-title2" v-if="raw.status_str == '已完成'">{{ raw.status_str }}</view>
-					<view class="info-left-title" v-else >已取 已买</view>
+					<view class="info-left-title" v-else>已取 已买</view>
 					<view class="info-left-img">
 						<image :src="raw.pic" mode=""></image>
 					</view>
@@ -52,8 +54,10 @@
 					<span class="info-center-font2">总样输：{{ raw.num }}</span>
 				</view>
 				<view class="info-right">
-					<button class="info-right-button1" v-if="raw.over_account !== '0.00'">超 +{{ raw.over_account }}</button>
-					<button class="info-right-button2" v-if="raw.info_account !== '0.00'">￥{{ raw.info_account }}</button>
+					<button class="info-right-button1" v-if="raw.over_account !== '0.00'">超
+						+{{ raw.over_account }}</button>
+					<button class="info-right-button2"
+						v-if="raw.info_account !== '0.00'">￥{{ raw.info_account }}</button>
 				</view>
 			</navigator>
 			<!-- <navigator url="/pages/details/details"  hover-class="navigator-hover" class="info-box">
@@ -76,7 +80,7 @@
 				</view>
 			</navigator> -->
 		</view>
-		<tab></tab>
+		<tab :title="title" @RefreshList="RefreshList"></tab>
 	</view>
 </template>
 
@@ -84,9 +88,9 @@
 	import navs from '../../components/nav.vue'
 	import tab from '../../components/tab.vue'
 	import dispatchingInfo from '../../components/dispatchingInfo.vue'
-	
+
 	export default {
-		components:{
+		components: {
 			navs,
 			tab,
 			dispatchingInfo
@@ -95,20 +99,22 @@
 			return {
 				userData: {},
 				orderInfo: [],
-				order_id: 0
+				order_id: 0,
+				title: '',
+				nextList: ['接单', '到达取货点', '到达送货点', '已交付']
 			}
 		},
-		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
-			
+		onLoad: function(option) { //option为object类型，会序列化上个页面传递的参数
+
 			let then = this
 			then.order_id = option.id
-			
+
 			//获取骑手跑腿中详情页面
 			then.getOrderInfo()
 		},
 		methods: {
 			//获取骑手跑腿中详情页面
-			getOrderInfo(){
+			getOrderInfo() {
 				this.userData = uni.getStorageSync('userinfo')
 				if (this.userData) {
 					uni.request({
@@ -126,36 +132,65 @@
 						},
 						success: (res) => {
 							this.orderInfo = res.data.data
+							this.title = this.nextList[this.orderInfo.next_status - 1]
 						}
 					})
-				}  
+				}
 			},
-			
+
 			//跳转到服务页面
-			navigatTo(){
+			navigatTo() {
 				uni.navigateTo({
-					url: '/pages/server/server?order_id='+this.orderInfo.order_id
+					url: '/pages/server/server?order_id=' + this.orderInfo.order_id
 				});
+			},
+			//点击下一步
+			RefreshList(val) {
+				let nextStatus = this.nextList.indexOf(this.title) + 1
+				uni.request({
+					url: "http://test.qd-happy.com/app_service",
+					method: "POST",
+					header: {
+						'Content-Type': "multipart/form-data",
+					},
+					data: {
+						interface: "order_upOrderStatus",
+						data: {
+							user_id: this.userData.user_id,
+							order_id: this.order_id,
+							status: nextStatus
+						}
+					},
+					success: (res) => {
+						this.getOrderInfo()
+						uni.showToast({
+							title: res.data.code_message
+						})
+					}
+				})
 			}
 		}
 	}
 </script>
 
 <style>
-	body{
+	body {
 		background-color: #fafafa;
 	}
-	.content{
+
+	.content {
 		width: 100%;
 		height: 100%;
 	}
-	.order-list{
+
+	.order-list {
 		width: 100%;
 		height: 380px;
-		box-shadow:0px 5px 10px 0px #ccc;
+		box-shadow: 0px 5px 10px 0px #ccc;
 		margin-bottom: 10px;
 	}
-	.list-top{
+
+	.list-top {
 		width: 100%;
 		height: 47px;
 		display: flex;
@@ -164,27 +199,32 @@
 		justify-content: space-around;
 		border-bottom: 1px solid #eee;
 	}
-	.top-more{
+
+	.top-more {
 		width: 30%;
 		height: 47px;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 	}
-	.more-img{
+
+	.more-img {
 		width: 27px;
 		height: 27px;
 	}
-	.more-img>image{
+
+	.more-img>image {
 		width: 100%;
 		height: 100%;
 	}
-	.more-number{
+
+	.more-number {
 		font-size: 12px;
 		color: #308bd1;
 		padding-left: 10px;
 	}
-	.top-left{
+
+	.top-left {
 		width: 20%;
 		height: 47px;
 		display: flex;
@@ -195,7 +235,8 @@
 		font-weight: 600;
 		color: #d13043;
 	}
-	.top-right{
+
+	.top-right {
 		width: 30%;
 		height: 47px;
 		display: flex;
@@ -205,33 +246,38 @@
 		font-size: 12px;
 		color: #d13043;
 	}
-	
-	.item-down-box{
+
+	.item-down-box {
 		width: 92%;
 		height: 30px;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 	}
-	.item-down{
+
+	.item-down {
 		width: 8px;
 		height: 14px;
 	}
-	.item-down>image{
+
+	.item-down>image {
 		width: 100%;
 		height: 100%;
 	}
-	.down-title{
+
+	.down-title {
 		font-size: 12px;
 		color: #ccc;
 		padding-left: 10px;
 	}
-	.left-spot2{
+
+	.left-spot2 {
 		font-size: 30px;
 		color: red;
 		padding-bottom: 20px;
 	}
-	.order-title{
+
+	.order-title {
 		width: 90%;
 		height: 38px;
 		font-size: 15px;
@@ -240,18 +286,21 @@
 		margin: 0 auto;
 		line-height: 38px;
 	}
-	.button-box{
+
+	.button-box {
 		width: 100%;
 		height: 40px;
 		display: flex;
 		flex-direction: row;
 		margin-top: 10px;
 	}
-	.button-left{
+
+	.button-left {
 		width: 70%;
 		height: 40px;
 	}
-	.button-right{
+
+	.button-right {
 		width: 30%;
 		height: 40px;
 		display: flex;
@@ -259,7 +308,8 @@
 		align-items: center;
 		justify-content: flex-end;
 	}
-	.button-buy{
+
+	.button-buy {
 		width: 30%;
 		height: 30px;
 		line-height: 30px;
@@ -270,7 +320,8 @@
 		float: left;
 		margin-left: 18px;
 	}
-	.button-send{
+
+	.button-send {
 		width: 30%;
 		height: 30px;
 		line-height: 30px;
@@ -281,7 +332,8 @@
 		float: left;
 		margin-left: 10px;
 	}
-	.button-temporary{
+
+	.button-temporary {
 		width: 70%;
 		height: 30px;
 		line-height: 30px;
@@ -290,14 +342,16 @@
 		color: #fff;
 		font-size: 15px;
 	}
-	.button-ongoing{
+
+	.button-ongoing {
 		width: 67%;
 		background-color: #52d130;
 		color: #fff;
 		font-size: 18px;
 		font-weight: 600;
 	}
-	.order-info{
+
+	.order-info {
 		width: 100%;
 		height: 100%;
 		background-color: #fff;
@@ -306,7 +360,8 @@
 		justify-content: center;
 		margin-bottom: 50px;
 	}
-	.info-box{
+
+	.info-box {
 		width: 94%;
 		height: 125px;
 		display: flex;
@@ -314,22 +369,26 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.info-left{
+
+	.info-left {
 		width: 30%;
 		height: 100px;
 		position: relative;
 	}
-	.info-center{
+
+	.info-center {
 		width: 40%;
 		height: 100px;
 		display: flex;
 		flex-direction: column;
 	}
-	.info-right{
+
+	.info-right {
 		width: 28%;
 		height: 100px;
 	}
-	.info-left-title{
+
+	.info-left-title {
 		position: absolute;
 		width: 50px;
 		height: 20px;
@@ -341,7 +400,8 @@
 		border-radius: 0 5px 5px 5px;
 		z-index: 30;
 	}
-	.info-left-title2{
+
+	.info-left-title2 {
 		position: absolute;
 		width: 50px;
 		height: 20px;
@@ -353,27 +413,33 @@
 		border-radius: 0 5px 5px 5px;
 		z-index: 30;
 	}
-	.info-left-img{
+
+	.info-left-img {
 		width: 106px;
 		height: 100px;
 	}
-	.info-left-img>image{
+
+	.info-left-img>image {
 		width: 100%;
 		height: 100%;
 	}
-	.info-center-font1{
+
+	.info-center-font1 {
 		font-size: 15px;
 		color: #333333;
 	}
-	.info-center-hr{
+
+	.info-center-hr {
 		padding-top: 10px;
 	}
-	.info-center-font2{
+
+	.info-center-font2 {
 		font-size: 15px;
 		color: #999999;
 		padding-top: 2px;
 	}
-	.info-right-button1{
+
+	.info-right-button1 {
 		width: 100%;
 		height: 30px;
 		background-color: #d13043;
@@ -385,7 +451,8 @@
 		margin-top: 30px;
 		white-space: nowrap
 	}
-	.info-right-button2{
+
+	.info-right-button2 {
 		width: 100%;
 		height: 30px;
 		background-color: #308bd1;

@@ -10,7 +10,7 @@
 				余额变更明细
 			</view>
 		</view>
-		<view class="detailed-info" v-show="show">
+		<view class="detailed-info" >
 			<view class="detailed-search">
 				<view class="search-left">
 					选择周期
@@ -28,63 +28,29 @@
 					</view>
 				</view>
 			</view>
-			<view class="search-item">
+			<view class="search-item" v-for="(item, index) in BalanceInfo" :key="index" v-show="show">
 				<view class="search-item-left">
 					<p class="search-left-line1">
-						客户编号： 090939
+						客户编号： {{item.customer_sn}}
 					</p>
 					<p class="search-left-line2">
-						订单编号：43243242342424
+						订单编号：{{item.order_sn}}
 					</p>
 				</view>
 				<view class="search-item-right">
 					<p class="search-right-line1">
-						+6.00元
+						+{{item.account}}
 					</p>
 					<p class="search-right-line2">
-						2018年6月21日17:29:30
+						{{item.addtime}}
 					</p>
 				</view>
 			</view>
-			<view class="search-item">
-				<view class="search-item-left">
-					<p class="search-left-line1">
-						客户编号： 090939
-					</p>
-					<p class="search-left-line2">
-						订单编号：43243242342424
-					</p>
-				</view>
-				<view class="search-item-right">
-					<p class="search-right-line1">
-						+6.00元
-					</p>
-					<p class="search-right-line2">
-						2018年6月21日17:29:30
-					</p>
-				</view>
-			</view>
-			<view class="search-item">
-				<view class="search-item-left">
-					<p class="search-left-line1">
-						客户编号： 090939
-					</p>
-					<p class="search-left-line2">
-						订单编号：43243242342424
-					</p>
-				</view>
-				<view class="search-item-right">
-					<p class="search-right-line1">
-						+6.00元
-					</p>
-					<p class="search-right-line2">
-						2018年6月21日17:29:30
-					</p>
-				</view>
-			</view>
+	
+
 		</view>
 		<view class="search-none" v-if="!show">
-			近一个月内没有交易
+			{{this.array[this.index]}}内没有交易
 		</view>
 	</view>
 </template>
@@ -93,32 +59,66 @@
 	export default {
 		data() {
 			return {
-				array: ['最近一个月', '最近一周', '昨天', '今天'],
+				array: ['最近30天', '本月', '上一个月', '本日', '昨日'],
 				index: 0,
-				show: true
+				show: true,
+				BalanceInfo:[]
 			}
+		},
+		onLoad() {
+			this.getBalance(this.index+1)
 		},
 		methods: {
 			bindPickerChange: function(e) {
-				console.log('picker发送选择改变，携带值为', e.target.value)
 				this.index = e.target.value
+				this.getBalance(this.index + 1)
 			},
-			navigateBack(){
+			navigateBack() {
 				uni.navigateBack()
+			},
+			getBalance(searchId) {
+				let userData = uni.getStorageSync('userinfo')
+				if (userData) {
+					uni.request({
+						url: "http://test.qd-happy.com/app_service",
+						method: "POST",
+						header: {
+							'Content-Type': "multipart/form-data",
+						},
+						data: {
+							interface: "users_getAccountList",
+							data: {
+								user_id: userData.user_id,
+								search:searchId
+							}
+						},
+						success: (res) => {
+							this.BalanceInfo = res.data.data.list
+							console.log(res)
+							if(this.BalanceInfo.length===0){
+								this.show=false
+							}else{
+								this.show=true
+							}
+						}
+					})
+				}
 			}
 		}
 	}
 </script>
 
 <style>
-	body{
+	body {
 		background-color: #fafafa;
 	}
-	.content{
+
+	.content {
 		width: 100%;
 		height: 100%;
 	}
-	.top-back{
+
+	.top-back {
 		width: 100%;
 		height: 44px;
 		padding-top: 20px;
@@ -127,30 +127,36 @@
 		line-height: 50px;
 		background-color: #308bd1;
 	}
-	.top-left{
+
+	.top-left {
 		width: 36%;
 		height: 30px;
 	}
-	.back-box{
+
+	.back-box {
 		width: 7px;
 		height: 12px;
 		margin-left: 10px;
 	}
-	.back-box>image{
+
+	.back-box>image {
 		width: 100%;
 		height: 100%;
 	}
-	.top-right{
+
+	.top-right {
 		width: 58%;
 		height: 30px;
 		color: #fff;
 		font-size: 16px;
 	}
-	.detailed-info{
+
+	.detailed-info {
 		width: 100%;
 		height: 100%;
 	}
-	.detailed-search{
+
+	.detailed-search {
 		width: 100%;
 		height: 50px;
 		background-color: #fff;
@@ -161,7 +167,8 @@
 		justify-content: center;
 		margin-bottom: 10px;
 	}
-	.search-left{
+
+	.search-left {
 		width: 22%;
 		height: 30px;
 		text-align: left;
@@ -171,7 +178,8 @@
 		font-weight: 600;
 		line-height: 30px;
 	}
-	.search-right{
+
+	.search-right {
 		width: 62%;
 		height: 30px;
 		display: flex;
@@ -179,7 +187,8 @@
 		align-items: center;
 		justify-content: space-around;
 	}
-	.search-right-title{
+
+	.search-right-title {
 		width: 20%;
 		height: 30px;
 		line-height: 30px;
@@ -188,22 +197,26 @@
 		flex-direction: row;
 		justify-content: flex-end;
 	}
-	.search-right-select{
+
+	.search-right-select {
 		width: 80%;
 		height: 30px;
 		padding-left: 10px;
 		line-height: 30px;
 		color: #999;
 	}
-	.search-right-more{
+
+	.search-right-more {
 		width: 7px;
 		height: 13px;
 	}
-	.search-right-more>image{
+
+	.search-right-more>image {
 		width: 100%;
 		height: 100%;
 	}
-	.search-item{
+
+	.search-item {
 		width: 100%;
 		height: 90px;
 		background-color: #fff;
@@ -213,38 +226,45 @@
 		flex-direction: row;
 		justify-content: center;
 	}
-	.search-item-left{
+
+	.search-item-left {
 		width: 46%;
 		height: 90px;
 	}
-	.search-item-right{
+
+	.search-item-right {
 		width: 46%;
 		height: 90px;
 		text-align: right;
 	}
-	.search-left-line1{
+
+	.search-left-line1 {
 		font-size: 12px;
 		color: #333;
 		font-weight: 600;
 		line-height: 40px;
 		padding-top: 10px;
 	}
-	.search-left-line2{
+
+	.search-left-line2 {
 		font-size: 12px;
 		color: #ccc;
 	}
-	.search-right-line1{
+
+	.search-right-line1 {
 		font-size: 12px;
 		color: #333;
 		font-weight: 600;
 		line-height: 40px;
 		padding-top: 10px;
 	}
-	.search-right-line2{
+
+	.search-right-line2 {
 		font-size: 12px;
 		color: #ccc;
 	}
-	.search-none{
+
+	.search-none {
 		width: 100%;
 		height: 50px;
 		display: flex;
