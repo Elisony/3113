@@ -4238,7 +4238,15 @@ var render = function() {
                   ),
                   _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
+                    {
+                      staticClass: _vm._$g(11, "sc"),
+                      attrs: { _i: 11 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
+                    },
                     [_vm._v(_vm._$g(11, "t0-0"))]
                   )
                 ],
@@ -4302,6 +4310,90 @@ var render = function() {
           }
         },
         [_vm._v("收入明细")]
+      ),
+      _c(
+        "v-uni-view",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm._$g(20, "v-show"),
+              expression: "_$g(20,'v-show')"
+            }
+          ],
+          staticClass: _vm._$g(20, "sc"),
+          style: _vm._$g(20, "s"),
+          attrs: { _i: 20 }
+        },
+        [
+          _c(
+            "v-uni-view",
+            {
+              staticClass: _vm._$g(21, "sc"),
+              attrs: { _i: 21 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
+            [_vm._v("X")]
+          ),
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
+            [
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(23, "sc"), attrs: { _i: 23 } },
+                [_vm._v("请输入提现金额")]
+              ),
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(24, "sc"), attrs: { _i: 24 } },
+                [
+                  _c("v-uni-input", {
+                    staticClass: _vm._$g(25, "sc"),
+                    attrs: { type: "number", _i: 25 },
+                    model: {
+                      value: _vm._$g(25, "v-model"),
+                      callback: function($$v) {
+                        _vm.$handleVModelEvent(25, $$v)
+                      },
+                      expression: "infoAccount"
+                    }
+                  })
+                ],
+                1
+              ),
+              _c("v-uni-view", { attrs: { _i: 26 } }, [
+                _vm._v(
+                  "提现金额范围为：" +
+                    _vm._$g(26, "t0-0") +
+                    "元 ~ " +
+                    _vm._$g(26, "t0-1") +
+                    "元"
+                )
+              ]),
+              _c(
+                "bitton",
+                {
+                  staticClass: _vm._$g(27, "sc"),
+                  attrs: { _i: 27 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [_vm._v("提交")]
+              )
+            ],
+            1
+          )
+        ],
+        1
       )
     ],
     1
@@ -4395,7 +4487,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\nbody{\n\tbackground-color: #fafafa;\n}\n.content {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\twidth: 100%;\n}\n.main-top{\n\twidth: 100%;\n\theight: 240px;\n\tbackground-color: #308bd1;\n\tborder-radius: 0 0 15px 15px;\n}\n.top-back{\n\twidth: 100%;\n\theight: 44px;\n\tmargin-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n}\n.top-left{\n\twidth: 42%;\n\theight: 30px;\n}\n.back-box{\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right{\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.top-info{\n\twidth: 100%;\n\theight: 106px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-left{\n\twidth: 80%;\n\theight: 90px;\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\tmargin-top: 40px;\n}\n.info-right{\n\twidth: 80%;\n\theight: 60px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\ttext-align: center;\n\tmargin-top: 20px;\n}\n.left-line1{\n\theight: 30px;\n\tcolor: #fff;\n\ttext-align: center;\n}\n.line1-name{\n\tfont-size: 15px;\n\tline-height: 50px;\n}\n.line1-title{\n\tfont-size: 12px;\n\tpadding-left: 10px;\n\tpadding-top: 5px;\n}\n.left-line2{\n\theight: 60px;\n\tcolor: #fff;\n\tfont-size: 30px;\n\tfont-weight: 600;\n\ttext-align: center;\n\tline-height: 60px;\n}\n.info-right-item1{\n\twidth: 50%;\n\theight: 60px;\n}\n.info-right-item2{\n\twidth: 50%;\n\theight: 60px;\n}\n.item-title{\n\tfont-size: 15px;\n\tcolor: #fff;\n}\n.item-content{\n\tfont-size: 18px;\n\tcolor: #fff;\n\tfont-weight: 600;\n\tline-height: 30px;\n}\n.wallet-bottom{\n\twidth: 90%;\n\theight: 55px;\n\tbackground-color: #fff;\n\tposition: fixed;\n\tbottom: 20px;\n\tborder: 1px solid #eee;\n\tborder-radius: 1px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\tline-height: 55px;\n\tfont-size: 18px;\n\tcolor: #308bd1;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n\tbackground-color: #fafafa;\n}\n.content {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\twidth: 100%;\n}\n.main-top {\n\twidth: 100%;\n\theight: 240px;\n\tbackground-color: #308bd1;\n\tborder-radius: 0 0 15px 15px;\n}\n.top-back {\n\twidth: 100%;\n\theight: 44px;\n\tmargin-top: 20px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tline-height: 50px;\n}\n.top-left {\n\twidth: 42%;\n\theight: 30px;\n}\n.back-box {\n\twidth: 7px;\n\theight: 12px;\n\tmargin-left: 10px;\n}\n.back-box>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.top-right {\n\twidth: 58%;\n\theight: 30px;\n\tcolor: #fff;\n\tfont-size: 16px;\n}\n.top-info {\n\twidth: 100%;\n\theight: 106px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n.info-left {\n\twidth: 80%;\n\theight: 90px;\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\tmargin-top: 40px;\n}\n.info-right {\n\twidth: 80%;\n\theight: 60px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\ttext-align: center;\n\tmargin-top: 20px;\n}\n.left-line1 {\n\theight: 30px;\n\tcolor: #fff;\n\ttext-align: center;\n}\n.line1-name {\n\tfont-size: 15px;\n\tline-height: 50px;\n}\n.line1-title {\n\tfont-size: 12px;\n\tpadding-left: 10px;\n\tpadding-top: 5px;\n}\n.left-line2 {\n\theight: 60px;\n\tcolor: #fff;\n\tfont-size: 30px;\n\tfont-weight: 600;\n\ttext-align: center;\n\tline-height: 60px;\n}\n.info-right-item1 {\n\twidth: 50%;\n\theight: 60px;\n}\n.info-right-item2 {\n\twidth: 50%;\n\theight: 60px;\n}\n.item-title {\n\tfont-size: 15px;\n\tcolor: #fff;\n}\n.item-content {\n\tfont-size: 18px;\n\tcolor: #fff;\n\tfont-weight: 600;\n\tline-height: 30px;\n}\n.wallet-bottom {\n\twidth: 90%;\n\theight: 55px;\n\tbackground-color: #fff;\n\tposition: fixed;\n\tbottom: 20px;\n\tborder: 1px solid #eee;\n\tborder-radius: 1px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\tline-height: 55px;\n\tfont-size: 18px;\n\tcolor: #308bd1;\n}\n.alert-box {\n\twidth: 100%;\n\theight: 300px;\n\tbackground-color: rgba(0, 0, 0, .5);\n\tposition: fixed;\n\ttop: 0px;\n\tz-index: 20;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.alert-info {\n\twidth: 300px;\n\theight: 200px;\n\tbackground-color: #fff;\n\tborder-radius: 5px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n.alert-info-title {\n\tfont-size: 20px;\n\tcolor: #333;\n\tfont-weight: 600;\n}\n.alert-info-content {\n\tfont-size: 15px;\n\tcolor: #333;\n\tfont-weight: 600;\n\tline-height: 40px;\n}\n.alert-info-button {\n\twidth: 30%;\n\theight: 30px;\n\tbackground-color: #308bd1;\n\tcolor: #fff;\n\ttext-align: center;\n\tline-height: 30px;\n\tborder-radius: 1px;\n\tmargin-top: 10px;\n}\n.alert-input {\n\twidth: 80%;\n\theight: 30px;\n\tborder: 1px solid #ccc;\n\tmargin: 10px auto;\n}\n.alert-colose {\n\tposition: absolute;\n\ttop: 10px;\n\tright: 10px;\n\tfont-size: 25px;\n\tcolor: #fff;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

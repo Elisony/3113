@@ -18,7 +18,7 @@
 							账户总额(元)
 						</span>
 					</view>
-					<view  class="left-line2">
+					<view class="left-line2" @click="withdrawalOfbalance">
 						{{WalletInfo.balance}}
 					</view>
 				</view>
@@ -37,6 +37,23 @@
 		<navigator url="/pages/balanceDetailed/balanceDetailed" hover-class="navigator-hover" class="wallet-bottom">
 			收入明细
 		</navigator>
+		<view class="alert-box" :style="{height: QHeight+'px'}" v-show="show">
+			<view class="alert-colose" @click="ruleNone()">
+				X
+			</view>
+			<view class="alert-info">
+				<view class="alert-info-title">
+					请输入提现金额
+				</view>
+				<view class="alert-info-content">
+					<input type="number" class="alert-input" v-model="infoAccount">
+				</view>
+				<view>
+					提现金额范围为：{{cashMinOrMax.cash_min}}元 ~ {{cashMinOrMax.cash_max}}元
+				</view>
+				<bitton class="alert-info-button" @tap="submitInfoAccount">提交</bitton>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -44,16 +61,27 @@
 	export default {
 		data() {
 			return {
-				WalletInfo:{}
+				WalletInfo: {},
+				QHeight: 0,
+				show: false,
+				infoAccount: '',
+				cashMinOrMax: {}
 			}
 		},
 		onLoad() {
 			this.getWallet()
+			//获取屏幕高度
+			uni.getSystemInfo({
+				success: (res) => {
+					let height = res.windowHeight - uni.upx2px(0)
+					this.QHeight = height
+				}
+			})
 		},
 		methods: {
-			navigateBack(){
+			navigateBack() {
 				//uni.navigateBack()
-				detail:-1
+				detail: -1
 			},
 			//获取钱包详情页面
 			getWallet() {
@@ -72,9 +100,81 @@
 							}
 						},
 						success: (res) => {
-							this.WalletInfo=res.data.data
+							this.WalletInfo = res.data.data
 						}
 					})
+				}
+			},
+			//余额提现
+			withdrawalOfbalance() {
+				console.log(this.WalletInfo.balance)
+
+				uni.request({
+					url: "http://test.qd-happy.com/app_service",
+					method: "POST",
+					header: {
+						'Content-Type': "multipart/form-data",
+					},
+					data: {
+						interface: "users_getCashSet",
+						data: {}
+					},
+					success: (res) => {
+						this.cashMinOrMax = res.data.data
+						if (this.WalletInfo.balance === '0.00' || Number(this.WalletInfo.balance) < Number(this
+								.cashMinOrMax.cash_min)) {
+							uni.showToast({
+								title: '暂不满足提现要求',
+								duration: 2000,
+								icon: 'none'
+							});
+						} else {
+							this.show = true
+						}
+
+					}
+				})
+			},
+			ruleNone() {
+				this.show = false
+				this.infoAccount = ''
+			},
+			submitInfoAccount() {
+				if (!this.infoAccount) {
+					uni.showToast({
+						title: '请输入提现金额！',
+						duration: 2000,
+						icon: 'none'
+					});
+				} else {
+
+					let userData = uni.getStorageSync('userinfo')
+					console.log(this.infoAccount, userData.user_id)
+					if (userData) {
+						uni.request({
+							url: "http://test.qd-happy.com/app_service",
+							method: "POST",
+							header: {
+								'Content-Type': "multipart/form-data",
+							},
+							data: {
+								interface: "users_addCash",
+								data: {
+									user_id: userData.user_id,
+									price: this.infoAccount
+								}
+							},
+							success: (res) => {
+								console.log(res)
+								this.ruleNone()
+								uni.showToast({
+									title: res.data.code_message,
+									duration: 2000,
+									icon: 'none'
+								});
+							}
+						})
+					}
 				}
 			}
 		}
@@ -82,9 +182,10 @@
 </script>
 
 <style>
-	body{
+	body {
 		background-color: #fafafa;
 	}
+
 	.content {
 		display: flex;
 		flex-direction: column;
@@ -92,13 +193,15 @@
 		justify-content: center;
 		width: 100%;
 	}
-	.main-top{
+
+	.main-top {
 		width: 100%;
 		height: 240px;
 		background-color: #308bd1;
 		border-radius: 0 0 15px 15px;
 	}
-	.top-back{
+
+	.top-back {
 		width: 100%;
 		height: 44px;
 		margin-top: 20px;
@@ -106,26 +209,31 @@
 		flex-direction: row;
 		line-height: 50px;
 	}
-	.top-left{
+
+	.top-left {
 		width: 42%;
 		height: 30px;
 	}
-	.back-box{
+
+	.back-box {
 		width: 7px;
 		height: 12px;
 		margin-left: 10px;
 	}
-	.back-box>image{
+
+	.back-box>image {
 		width: 100%;
 		height: 100%;
 	}
-	.top-right{
+
+	.top-right {
 		width: 58%;
 		height: 30px;
 		color: #fff;
 		font-size: 16px;
 	}
-	.top-info{
+
+	.top-info {
 		width: 100%;
 		height: 106px;
 		display: flex;
@@ -133,7 +241,8 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.info-left{
+
+	.info-left {
 		width: 80%;
 		height: 90px;
 		display: flex;
@@ -141,7 +250,8 @@
 		justify-content: center;
 		margin-top: 40px;
 	}
-	.info-right{
+
+	.info-right {
 		width: 80%;
 		height: 60px;
 		display: flex;
@@ -150,21 +260,25 @@
 		text-align: center;
 		margin-top: 20px;
 	}
-	.left-line1{
+
+	.left-line1 {
 		height: 30px;
 		color: #fff;
 		text-align: center;
 	}
-	.line1-name{
+
+	.line1-name {
 		font-size: 15px;
 		line-height: 50px;
 	}
-	.line1-title{
+
+	.line1-title {
 		font-size: 12px;
 		padding-left: 10px;
 		padding-top: 5px;
 	}
-	.left-line2{
+
+	.left-line2 {
 		height: 60px;
 		color: #fff;
 		font-size: 30px;
@@ -172,25 +286,30 @@
 		text-align: center;
 		line-height: 60px;
 	}
-	.info-right-item1{
+
+	.info-right-item1 {
 		width: 50%;
 		height: 60px;
 	}
-	.info-right-item2{
+
+	.info-right-item2 {
 		width: 50%;
 		height: 60px;
 	}
-	.item-title{
+
+	.item-title {
 		font-size: 15px;
 		color: #fff;
 	}
-	.item-content{
+
+	.item-content {
 		font-size: 18px;
 		color: #fff;
 		font-weight: 600;
 		line-height: 30px;
 	}
-	.wallet-bottom{
+
+	.wallet-bottom {
 		width: 90%;
 		height: 55px;
 		background-color: #fff;
@@ -204,5 +323,69 @@
 		line-height: 55px;
 		font-size: 18px;
 		color: #308bd1;
+	}
+
+	.alert-box {
+		width: 100%;
+		height: 300px;
+		background-color: rgba(0, 0, 0, .5);
+		position: fixed;
+		top: 0px;
+		z-index: 20;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.alert-info {
+		width: 300px;
+		height: 200px;
+		background-color: #fff;
+		border-radius: 5px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.alert-info-title {
+		font-size: 20px;
+		color: #333;
+		font-weight: 600;
+	}
+
+	.alert-info-content {
+		font-size: 15px;
+		color: #333;
+		font-weight: 600;
+		line-height: 40px;
+	}
+
+	.alert-info-button {
+		width: 30%;
+		height: 30px;
+		background-color: #308bd1;
+		color: #fff;
+		text-align: center;
+		line-height: 30px;
+		border-radius: 1px;
+		margin-top: 10px;
+	}
+
+	.alert-input {
+		width: 80%;
+		height: 30px;
+		border: 1px solid #ccc;
+		margin: 10px auto;
+
+	}
+
+	.alert-colose {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		font-size: 25px;
+		color: #fff;
 	}
 </style>
