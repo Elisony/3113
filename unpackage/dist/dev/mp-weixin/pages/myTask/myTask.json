@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "dispatching-info": "/components/dispatchingInfo",
+    "purchasing-agent": "/components/purchasingAgent",
+    "retail": "/components/retail"
+  }
+}

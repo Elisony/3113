@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "navs": "/components/nav",
+    "tab": "/components/tab",
+    "purchasing-agent": "/components/purchasingAgent",
+    "retail": "/components/retail",
+    "alert": "/components/alert"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/singIn/singIn",
+    "pages/index/index",
+    "pages/finishWork/finishWork",
+    "pages/orderTaking/orderTaking",
+    "pages/balanceDetailed/balanceDetailed",
+    "pages/news/news",
+    "pages/wallet/wallet",
+    "pages/cancelReason/cancelReason",
+    "pages/orderCancel/orderCancel",
+    "pages/myTask/myTask",
+    "pages/orderFinish/orderFinish",
+    "pages/details/details",
+    "pages/completeTask/completeTask",
+    "pages/orderReceived/orderReceived",
+    "pages/main/main",
+    "pages/server/server"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

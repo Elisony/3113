@@ -1,0 +1,1 @@
+<view class="content"><image class="logo" style="{{'height:'+(QHeight+'px')+';'}}" src="/static/start_screen.jpg"></image></view>

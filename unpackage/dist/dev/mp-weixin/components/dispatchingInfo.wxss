@@ -1,0 +1,85 @@
+
+.list-address{
+	width: 100%;
+	height: 180px;
+	border-bottom: 1px solid #eee;
+	padding-top: 10px;
+}
+.list-item{
+	width: 100%;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.item-left{
+	width: 73%;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+}
+.item-right{
+	width: 20%;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	font-size: 15px;
+	color: #308bd1;
+}
+.left-spot{
+	font-size: 30px;
+	color: #308bd1;
+	padding-bottom: 20px;
+}
+.left-title{
+	font-size: 15px;
+	color: #333333;
+	padding-left: 10px;
+	justify-content: flex-start;
+}
+.contacts-box{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+.contacts-left{
+	width: 20%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin-left: 18px;
+	font-size: 15px;
+	color: #333;
+	font-weight: 600;
+}
+.contacts-center{
+	width: 30%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	font-size: 15px;
+	color: #333;
+	font-weight: 600;
+}
+.contacts-right{
+	width: 26%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.right-phone{
+	width: 23px;
+	height: 23px;
+}
+.right-phone>image{
+	width: 100%;
+	height: 100%;
+}
+

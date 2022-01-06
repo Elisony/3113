@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "navs": "/components/nav",
+    "tab": "/components/tab",
+    "dispatching-info": "/components/dispatchingInfo"
+  }
+}

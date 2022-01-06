@@ -1,0 +1,155 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path" : "pages/singIn/singIn",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": ""
+			}
+			
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+		    "path" : "pages/finishWork/finishWork",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+		    }
+		    
+		},
+		{
+			"path" : "pages/orderTaking/orderTaking",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+			}
+			
+		},
+		{
+		    "path" : "pages/balanceDetailed/balanceDetailed",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+		    }
+		    
+		},
+		{
+		    "path" : "pages/news/news",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+		    }
+		    
+		},
+		{
+		    "path" : "pages/wallet/wallet",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+		    }
+		    
+		},
+		{
+		    "path" : "pages/cancelReason/cancelReason",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+		    }
+		    
+		},
+		{
+		    "path" : "pages/orderCancel/orderCancel",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+		    }
+		    
+		},
+		{
+			"path" : "pages/myTask/myTask",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+			}
+			
+		},
+		{
+		    "path" : "pages/orderFinish/orderFinish",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+		    }
+		    
+		},
+		{
+			"path" : "pages/details/details",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+			}
+			
+		},
+		{
+			"path" : "pages/completeTask/completeTask",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+			}
+			
+		},
+		{
+		    "path" : "pages/orderReceived/orderReceived",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+		    }
+		    
+		},
+		{
+			"path" : "pages/main/main",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+			}
+			
+		},
+		{
+		    "path" : "pages/server/server",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white"
+		    }
+		    
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle":"custom",
+		"app-plus":{
+			"titleView":false
+		}
+
+	}
+}

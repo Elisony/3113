@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "purchasing-agent": "/components/purchasingAgent"
+  }
+}

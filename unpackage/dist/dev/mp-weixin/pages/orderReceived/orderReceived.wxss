@@ -1,0 +1,255 @@
+
+page{
+	background-color: #fafafa;
+}
+.content{
+	width: 100%;
+	height: 100%;
+}
+.order-list{
+	width: 100%;
+	height: 380px;
+	box-shadow:0px 5px 10px 0px #ccc;
+	margin-bottom: 10px;
+}
+.list-top{
+	width: 100%;
+	height: 47px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	border-bottom: 1px solid #eee;
+}
+.top-more{
+	width: 30%;
+	height: 47px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.more-img{
+	width: 27px;
+	height: 27px;
+}
+.more-img>image{
+	width: 100%;
+	height: 100%;
+}
+.more-number{
+	font-size: 12px;
+	color: #308bd1;
+	padding-left: 10px;
+}
+.top-left{
+	width: 20%;
+	height: 47px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	font-size: 24px;
+	font-weight: 600;
+	color: #d13043;
+}
+.top-right{
+	width: 30%;
+	height: 47px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	font-size: 12px;
+	color: #d13043;
+}
+.item-down-box{
+	width: 92%;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.item-down{
+	width: 8px;
+	height: 14px;
+}
+.item-down>image{
+	width: 100%;
+	height: 100%;
+}
+.down-title{
+	font-size: 12px;
+	color: #ccc;
+	padding-left: 10px;
+}
+.left-spot2{
+	font-size: 30px;
+	color: red;
+	padding-bottom: 20px;
+}
+.order-title{
+	width: 90%;
+	height: 38px;
+	font-size: 15px;
+	color: #d13043;
+	font-weight: 600;
+	margin: 0 auto;
+	line-height: 38px;
+}
+.button-box{
+	width: 100%;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	margin-top: 10px;
+}
+.button-left{
+	width: 70%;
+	height: 40px;
+}
+.button-right{
+	width: 30%;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+}
+.button-buy{
+	width: 30%;
+	height: 30px;
+	line-height: 30px;
+	background-color: #308bd1;
+	border-radius: 30px;
+	color: #fff;
+	font-size: 15px;
+	float: left;
+	margin-left: 18px;
+}
+.button-send{
+	width: 30%;
+	height: 30px;
+	line-height: 30px;
+	background-color: #aaaaaa;
+	border-radius: 30px;
+	color: #fff;
+	font-size: 15px;
+	float: left;
+	margin-left: 10px;
+}
+.button-temporary{
+	width: 70%;
+	height: 30px;
+	line-height: 30px;
+	background-color: #52d130;
+	border-radius: 30px;
+	color: #fff;
+	font-size: 15px;
+}
+.button-ongoing{
+	width: 67%;
+	background-color: #52d130;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 600;
+}
+.order-info{
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+.info-box{
+	width: 94%;
+	height: 125px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.info-left{
+	width: 30%;
+	height: 100px;
+	position: relative;
+}
+.info-center{
+	width: 40%;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+}
+.info-right{
+	width: 28%;
+	height: 100px;
+}
+.info-left-title{
+	position: absolute;
+	width: 50px;
+	height: 20px;
+	background-color: #308bd1;
+	font-size: 10px;
+	color: #fff;
+	text-align: center;
+	line-height: 20px;
+	border-radius: 0 5px 5px 5px;
+	z-index: 30;
+}
+.info-left-title2{
+	position: absolute;
+	width: 50px;
+	height: 20px;
+	background-color: #52d130;
+	font-size: 10px;
+	color: #fff;
+	text-align: center;
+	line-height: 20px;
+	border-radius: 0 5px 5px 5px;
+	z-index: 30;
+}
+.info-left-img{
+	width: 106px;
+	height: 100px;
+}
+.info-left-img>image{
+	width: 100%;
+	height: 100%;
+}
+.info-center-font1{
+	font-size: 15px;
+	color: #333333;
+}
+.info-center-hr{
+	padding-top: 10px;
+}
+.info-center-font2{
+	font-size: 15px;
+	color: #999999;
+	padding-top: 2px;
+}
+.info-right-button1{
+	width: 100%;
+	height: 30px;
+	background-color: #d13043;
+	font-size: 15px;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 30px;
+	margin-top: 30px;
+	white-space: nowrap
+}
+.info-right-button2{
+	width: 100%;
+	height: 30px;
+	background-color: #308bd1;
+	font-size: 15px;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	margin-top: 5px;
+	border-radius: 30px;
+}
+

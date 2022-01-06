@@ -1,0 +1,19 @@
+<view class="content"><view class="log-box"><image class="log-img" src="/static/log.png" alt></image></view><view class="phone-box"><view class="phone-left"></view><view class="phone-centent"><view class="phone-title">手机号码</view><view class="phone-input-box"><input type="text" placeholder="输入手机号码" data-event-opts="{{[['input',[['__set_model',['','myPhone','$event',[]]]]]]}}" value="{{myPhone}}" bindinput="__e"/></view><view data-event-opts="{{[['tap',[['getCode',['$event']]]]]}}" class="phone-get" style="{{(style)}}" bindtap="__e">{{''+buttonInfo+''}}</view></view><view class="phone-right"></view></view><view class="phone-box"><view class="phone-left"></view><view class="phone-centent"><view class="phone-title">验证码</view><view class="phone-input-box2"><input style="{{(verifyStyle)}}" type="text" placeholder="输入验证码" data-event-opts="{{[['tap',[['clearCode',['$event']]]],['input',[['__set_model',['','code','$event',[]]]]]]}}" value="{{code}}" bindtap="__e" bindinput="__e"/></view><view class="phone-get-y"></view></view><view class="phone-right-y"></view></view><view class="submit-box"><view class="submit-left"></view><view data-event-opts="{{[['tap',[['verification',['$event']]]]]}}" class="submit-centent" bindtap="__e">登录</view><view class="submit-right"></view></view><view class="rule-box"><label class="rule-left _span">点击“登录”按钮即表示你同意</label><label data-event-opts="{{[['tap',[['ruleShow',['$event']]]]]}}" class="rule-right _span" bindtap="__e">《解忧服务员合作协议》</label></view><view data-event-opts="{{[['tap',[['ruleNone',['$event']]]]]}}" hidden="{{!(show)}}" class="rule-info" bindtap="__e"><view class="_h5">解忧服务员合作协议</view><view class="_p">游泳规则
+			a swimming pool's regulations;
+			交通规则
+			traffic regulations;
+			遵守规则
+			follow the procedures;
+			违反规则
+			infringe rules;
+			拼写规则
+			rules of spelling;
+			有规则必有例外。
+			There is no rule without an exception.
+			没有一成不变的规则。
+			There is no cast-iron [fixed] rule.
+			（整齐） regular:
+			这条河流的水道原来很不规则。
+			The course of this river used to be quite irregular.
+			这一片建筑物的布局十分规则。
+			The buildings in this area are laid out in an orderly fashion.</view></view></view>
