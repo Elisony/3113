@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<view class="top-back">
-			<view class="top-left">
+			<view class="top-left" @click="navigateBack">
 				<view class="back-box">
 					<image src="/static/images/back.png" mode=""></image>
 				</view>
@@ -31,7 +31,7 @@
 		<view class="reason-button" @click="chioseCancelStatus(2)">
 			不联系，直接取消
 		</view>
-		<view class="reason-button">
+		<view class="reason-button" @click="navigateBack">
 			放弃取消
 		</view>
 		<alert :QHeight="QHeight" :alertData="alertData" :show="show"  ref="colose"></alert>
@@ -74,6 +74,9 @@
 			then.getMsgNum()
 		},
 		methods: {
+			navigateBack() {
+				uni.navigateBack()
+			},
 			//选择取消选项
 			chioseCancelStatus(el){
 				let userData = uni.getStorageSync('userinfo')

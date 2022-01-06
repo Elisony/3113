@@ -1,7 +1,8 @@
 <template>
 	<view class="content">
 		<view class="nav-box">
-			<view class="nav-item">
+			<navs :userData="userData" :UnreadMessage='UnreadMessage' :title="title"></navs>
+			<!-- 	<view class="nav-item">
 				<view class="head-img">
 					<image src="/static/images/headimg.jpeg" mode=""></image>
 				</view>
@@ -16,7 +17,7 @@
 				<view class="message-box">
 					<image src="/static/images/message.png" mode=""></image>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<view class="none-info">
 			<view class="none-info-img">
@@ -28,30 +29,57 @@
 </template>
 
 <script>
+	import navs from '../../components/nav.vue'
 	export default {
+		components: {
+			navs,
+		},
 		data() {
 			return {
-				
+				userData: {},
+				UnreadMessage: '',
+				title:''
 			}
 		},
 		onLoad() {
-			
+			let userinfo = uni.getStorageSync('userinfo')
+			this.userData = userinfo
+			this.title='开始接单'
+			//获取未读消息条数
+			uni.request({
+				url: "http://test.qd-happy.com/app_service",
+				method: "POST",
+				header: {
+					'Content-Type': "multipart/form-data",
+				},
+				data: {
+					interface: "users_getMsgNum",
+					data: {
+						user_id: this.userData.user_id,
+					}
+				},
+				success: (res) => {
+					this.UnreadMessage = res.data.data.num
+				}
+			})
 		},
 		methods: {
-			
+
 		}
 	}
 </script>
 
 <style>
-	body{
+	body {
 		background-color: #fafafa;
 	}
-	.content{
+
+	.content {
 		width: 100%;
 		height: 100%;
 	}
-	.nav-box{
+
+	.nav-box {
 		width: 100%;
 		height: 84px;
 		background-color: #308bd1;
@@ -59,7 +87,8 @@
 		flex-direction: row;
 		justify-content: space-around;
 	}
-	.nav-item{
+
+	.nav-item {
 		width: 50%;
 		height: 44px;
 		margin-top: 30px;
@@ -68,7 +97,8 @@
 		align-items: center;
 		justify-content: flex-start;
 	}
-	.nav-center{
+
+	.nav-center {
 		width: 30%;
 		height: 44px;
 		margin-top: 30px;
@@ -77,22 +107,26 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.head-img{
+
+	.head-img {
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
 		overflow: hidden;
 	}
-	.head-img>image{
+
+	.head-img>image {
 		width: 100%;
 		height: 100%;
 	}
-	.nav-name{
+
+	.nav-name {
 		font-size: 12px;
 		color: #fff;
 		padding-left: 10px;
 	}
-	.nav-status{
+
+	.nav-status {
 		width: 94px;
 		height: 29px;
 		border: 1px solid #fff;
@@ -102,29 +136,35 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.status-img{
+
+	.status-img {
 		width: 19px;
 		height: 17px;
 	}
-	.status-img>image{
+
+	.status-img>image {
 		width: 100%;
 		height: 100%;
 	}
-	.status-title{
+
+	.status-title {
 		font-size: 15px;
 		color: #fff;
 		padding-left: 10px;
 	}
-	.message-box{
+
+	.message-box {
 		width: 17px;
 		height: 21px;
 		z-index: 19;
 	}
-	.message-box>image{
+
+	.message-box>image {
 		width: 100%;
 		height: 100%;
 	}
-	.nav-right{
+
+	.nav-right {
 		width: 22%;
 		height: 44px;
 		margin-top: 30px;
@@ -134,7 +174,8 @@
 		justify-content: flex-end;
 		position: relative;
 	}
-	.message-sup{
+
+	.message-sup {
 		width: 15px;
 		height: 15px;
 		background-color: red;
@@ -148,20 +189,24 @@
 		right: -9px;
 		z-index: 20;
 	}
-	.none-info-title{
+
+	.none-info-title {
 		font-size: 15px;
 		color: #9b9b9b;
 		line-height: 50px;
 	}
-	.none-info-img{
+
+	.none-info-img {
 		width: 84px;
 		height: 92px;
 	}
-	.none-info-img>image{
+
+	.none-info-img>image {
 		width: 100%;
 		height: 100%;
 	}
-	.none-info{
+
+	.none-info {
 		width: 100%;
 		height: 150px;
 		display: flex;

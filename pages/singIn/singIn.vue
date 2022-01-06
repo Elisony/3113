@@ -83,7 +83,6 @@
 		onLoad() {
 			//获取跳转参数
 			let userinfo = uni.getStorageSync('userinfo')
-			console.log(userinfo)
 			if (userinfo) {
 				uni.navigateTo({
 				    url: '/pages/orderTaking/orderTaking'
@@ -202,6 +201,7 @@
 							}
 						},
 						success: (res) => {
+							console.log(res)
 							if (res.data.data.working_status == 1) {
 								uni.navigateTo({
 								    url: '/pages/orderTaking/orderTaking'

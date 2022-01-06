@@ -80,7 +80,7 @@
 		},
 		methods: {
 			navigateBack() {
-				//uni.navigateBack()
+				uni.navigateBack()
 				detail: -1
 			},
 			//获取钱包详情页面

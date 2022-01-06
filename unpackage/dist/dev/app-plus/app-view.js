@@ -1349,79 +1349,28 @@ var render = function() {
       _c(
         "v-uni-view",
         { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
-        [
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
-            [
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
-                [
-                  _c("v-uni-image", {
-                    attrs: {
-                      src: "/static/images/headimg.jpeg",
-                      mode: "",
-                      _i: 4
-                    }
-                  })
-                ],
-                1
-              ),
-              _c("span", { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } }, [
-                _vm._v("小童")
-              ])
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
-            [
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-                [_vm._v("15")]
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
-                [
-                  _c("v-uni-image", {
-                    attrs: {
-                      src: "/static/images/message.png",
-                      mode: "",
-                      _i: 9
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
+        [_c("navs", { attrs: { _i: 2 } })],
         1
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+        { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
         [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
+            { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
             [
               _c("v-uni-image", {
                 attrs: {
                   src: "/static/images/finish-work.png",
                   mode: "",
-                  _i: 12
+                  _i: 5
                 }
               })
             ],
             1
           ),
-          _c("span", { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } }, [
+          _c("span", { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } }, [
             _vm._v("收工啦...")
           ])
         ],
@@ -1461,8 +1410,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _nav = _interopRequireDefault(__webpack_require__(/*! ../../components/nav.vue */ 35));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
 
   data: function data() {
@@ -1470,7 +1419,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       wxsProps: {} };
 
   },
-  components: {} };exports.default = _default;
+  components: {
+    'navs': _nav.default } };exports.default = _default;
 
 /***/ }),
 /* 27 */
@@ -1519,7 +1469,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\nbody{\n\tbackground-color: #fafafa;\n}\n.content{\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-box{\n\twidth: 100%;\n\theight: 84px;\n\tbackground-color: #308bd1;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-around;\n}\n.nav-item{\n\twidth: 50%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n}\n.nav-center{\n\twidth: 30%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.head-img{\n\twidth: 40px;\n\theight: 40px;\n\tborder-radius: 50%;\n\toverflow: hidden;\n}\n.head-img>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-name{\n\tfont-size: 12px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.nav-status{\n\twidth: 94px;\n\theight: 29px;\n\tborder: 1px solid #fff;\n\tborder-radius: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.status-img{\n\twidth: 19px;\n\theight: 17px;\n}\n.status-img>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.status-title{\n\tfont-size: 15px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.message-box{\n\twidth: 17px;\n\theight: 21px;\n\tz-index: 19;\n}\n.message-box>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-right{\n\twidth: 22%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n\tposition: relative;\n}\n.message-sup{\n\twidth: 15px;\n\theight: 15px;\n\tbackground-color: red;\n\tborder-radius: 50%;\n\tfont-size: 10px;\n\tline-height: 15px;\n\ttext-align: center;\n\tcolor: #fff;\n\tposition: absolute;\n\ttop: 6px;\n\tright: -9px;\n\tz-index: 20;\n}\n.none-info-title{\n\tfont-size: 15px;\n\tcolor: #9b9b9b;\n\tline-height: 50px;\n}\n.none-info-img{\n\twidth: 84px;\n\theight: 92px;\n}\n.none-info-img>uni-image{\n\twidth: 100%;\n\theight: 100%;\n}\n.none-info{\n\twidth: 100%;\n\theight: 150px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\tmargin-top: 130px;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n\tbackground-color: #fafafa;\n}\n.content {\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-box {\n\twidth: 100%;\n\theight: 84px;\n\tbackground-color: #308bd1;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-around;\n}\n.nav-item {\n\twidth: 50%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n}\n.nav-center {\n\twidth: 30%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.head-img {\n\twidth: 40px;\n\theight: 40px;\n\tborder-radius: 50%;\n\toverflow: hidden;\n}\n.head-img>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-name {\n\tfont-size: 12px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.nav-status {\n\twidth: 94px;\n\theight: 29px;\n\tborder: 1px solid #fff;\n\tborder-radius: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.status-img {\n\twidth: 19px;\n\theight: 17px;\n}\n.status-img>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.status-title {\n\tfont-size: 15px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.message-box {\n\twidth: 17px;\n\theight: 21px;\n\tz-index: 19;\n}\n.message-box>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-right {\n\twidth: 22%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n\tposition: relative;\n}\n.message-sup {\n\twidth: 15px;\n\theight: 15px;\n\tbackground-color: red;\n\tborder-radius: 50%;\n\tfont-size: 10px;\n\tline-height: 15px;\n\ttext-align: center;\n\tcolor: #fff;\n\tposition: absolute;\n\ttop: 6px;\n\tright: -9px;\n\tz-index: 20;\n}\n.none-info-title {\n\tfont-size: 15px;\n\tcolor: #9b9b9b;\n\tline-height: 50px;\n}\n.none-info-img {\n\twidth: 84px;\n\theight: 92px;\n}\n.none-info-img>uni-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.none-info {\n\twidth: 100%;\n\theight: 150px;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\tmargin-top: 130px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -2149,7 +2099,7 @@ var render = function() {
                 1
               ),
               _c("span", { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } }, [
-                _vm._v("收工")
+                _vm._v(_vm._$g(9, "t0-0"))
               ])
             ],
             1
@@ -2223,7 +2173,7 @@ __webpack_require__.r(__webpack_exports__);
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 {
-  props: ["userData", "UnreadMessage"],
+  props: ["userData", "UnreadMessage", "title"],
   data: function data() {
     return {
       wxsProps: {} };
@@ -2278,7 +2228,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.nav-box[data-v-105716b8]{\n\twidth: 100%;\n\theight: 84px;\n\tbackground-color: #308bd1;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-around;\n}\n.nav-item[data-v-105716b8]{\n\twidth: 22%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n}\n.nav-center[data-v-105716b8]{\n\twidth: 30%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.head-img[data-v-105716b8]{\n\twidth: 40px;\n\theight: 40px;\n\tborder-radius: 50%;\n\toverflow: hidden;\n}\n.head-img>uni-image[data-v-105716b8]{\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-name[data-v-105716b8]{\n\tfont-size: 12px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.nav-status[data-v-105716b8]{\n\twidth: 94px;\n\theight: 29px;\n\tborder: 1px solid #fff;\n\tborder-radius: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.status-img[data-v-105716b8]{\n\twidth: 19px;\n\theight: 17px;\n}\n.status-img>uni-image[data-v-105716b8]{\n\twidth: 100%;\n\theight: 100%;\n}\n.status-title[data-v-105716b8]{\n\tfont-size: 15px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.message-box[data-v-105716b8]{\n\twidth: 17px;\n\theight: 21px;\n\tz-index: 19;\n}\n.message-box>uni-image[data-v-105716b8]{\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-right[data-v-105716b8]{\n\twidth: 22%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n\tposition: relative;\n}\n.message-sup[data-v-105716b8]{\n\twidth: 15px;\n\theight: 15px;\n\tbackground-color: red;\n\tborder-radius: 50%;\n\tfont-size: 10px;\n\tline-height: 15px;\n\ttext-align: center;\n\tcolor: #fff;\n\tposition: absolute;\n\ttop: 6px;\n\tright: -9px;\n\tz-index: 20;\n}\n", ""]);
+exports.push([module.i, "\n.nav-box[data-v-105716b8] {\n\twidth: 100%;\n\theight: 84px;\n\tbackground-color: #308bd1;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-around;\n}\n.nav-item[data-v-105716b8] {\n\twidth: 22%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-start;\n}\n.nav-center[data-v-105716b8] {\n\twidth: 30%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.head-img[data-v-105716b8] {\n\twidth: 40px;\n\theight: 40px;\n\tborder-radius: 50%;\n\toverflow: hidden;\n}\n.head-img>uni-image[data-v-105716b8] {\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-name[data-v-105716b8] {\n\tfont-size: 12px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.nav-status[data-v-105716b8] {\n\twidth: 94px;\n\theight: 29px;\n\tborder: 1px solid #fff;\n\tborder-radius: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.status-img[data-v-105716b8] {\n\twidth: 19px;\n\theight: 17px;\n}\n.status-img>uni-image[data-v-105716b8] {\n\twidth: 100%;\n\theight: 100%;\n}\n.status-title[data-v-105716b8] {\n\tfont-size: 15px;\n\tcolor: #fff;\n\tpadding-left: 10px;\n}\n.message-box[data-v-105716b8] {\n\twidth: 17px;\n\theight: 21px;\n\tz-index: 19;\n}\n.message-box>uni-image[data-v-105716b8] {\n\twidth: 100%;\n\theight: 100%;\n}\n.nav-right[data-v-105716b8] {\n\twidth: 22%;\n\theight: 44px;\n\tmargin-top: 30px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: flex-end;\n\tposition: relative;\n}\n.message-sup[data-v-105716b8] {\n\twidth: 15px;\n\theight: 15px;\n\tbackground-color: red;\n\tborder-radius: 50%;\n\tfont-size: 10px;\n\tline-height: 15px;\n\ttext-align: center;\n\tcolor: #fff;\n\tposition: absolute;\n\ttop: 6px;\n\tright: -9px;\n\tz-index: 20;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -4582,7 +4532,15 @@ var render = function() {
         [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+            {
+              staticClass: _vm._$g(2, "sc"),
+              attrs: { _i: 2 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
             [
               _c(
                 "v-uni-view",
@@ -4692,9 +4650,19 @@ var render = function() {
         },
         [_vm._v("不联系，直接取消")]
       ),
-      _c("v-uni-view", { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } }, [
-        _vm._v("放弃取消")
-      ]),
+      _c(
+        "v-uni-view",
+        {
+          staticClass: _vm._$g(19, "sc"),
+          attrs: { _i: 19 },
+          on: {
+            click: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
+        [_vm._v("放弃取消")]
+      ),
       _c("alert", { ref: "colose", attrs: { _i: 20 } })
     ],
     1
@@ -8343,6 +8311,68 @@ var render = function() {
               )
             ],
             1
+          ),
+          _c(
+            "v-uni-view",
+            {
+              staticClass: _vm._$g(67, "sc"),
+              attrs: { _i: 67 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
+            [
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(68, "sc"), attrs: { _i: 68 } },
+                [
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(69, "sc"), attrs: { _i: 69 } },
+                    [
+                      _c("v-uni-image", {
+                        attrs: {
+                          src: "/static/images/set.png",
+                          mode: "",
+                          _i: 70
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _c(
+                    "span",
+                    { staticClass: _vm._$g(71, "sc"), attrs: { _i: 71 } },
+                    [_vm._v("退出登录")]
+                  )
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(72, "sc"), attrs: { _i: 72 } },
+                [
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(73, "sc"), attrs: { _i: 73 } },
+                    [
+                      _c("v-uni-image", {
+                        attrs: {
+                          src: "/static/images/more-2.png",
+                          mode: "",
+                          _i: 74
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
           )
         ],
         1
@@ -8909,7 +8939,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! @/static/iconfont/Pi
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*每个页面公共css */\n@font-face {\n    font-family: test1-icon;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n@font-face {\n  font-family: 'iconfont';  /* Project id 2979078 */\n  src: url('https://at.alicdn.com/t/font_2979078_cay4xu2hw4f.woff2?t=1638331821562') format('woff2'),\n       url('https://at.alicdn.com/t/font_2979078_cay4xu2hw4f.woff?t=1638331821562') format('woff'),\n       url('https://at.alicdn.com/t/font_2979078_cay4xu2hw4f.ttf?t=1638331821562') format('truetype');\n}\n.iconfont {\n  font-family: \"iconfont\" !important;\n  font-size: 16px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.icon-fanhui:before {\n  content: \"\\e600\";\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*每个页面公共css */\n@font-face {\n\tfont-family: test1-icon;\n\tsrc: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n@font-face {\n\tfont-family: 'iconfont';\n\t/* Project id 2979078 */\n\tsrc: url('https://at.alicdn.com/t/font_2979078_cay4xu2hw4f.woff2?t=1638331821562') format('woff2'),\n\t\turl('https://at.alicdn.com/t/font_2979078_cay4xu2hw4f.woff?t=1638331821562') format('woff'),\n\t\turl('https://at.alicdn.com/t/font_2979078_cay4xu2hw4f.ttf?t=1638331821562') format('truetype');\n}\n.iconfont {\n\tfont-family: \"iconfont\" !important;\n\tfont-size: 16px;\n\tfont-style: normal;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n}\n.icon-fanhui:before {\n\tcontent: \"\\e600\";\n}\n", ""]);
 // Exports
 module.exports = exports;
 

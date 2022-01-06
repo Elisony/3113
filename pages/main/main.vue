@@ -114,6 +114,19 @@
 					</view>
 				</view>
 			</view>
+			<view class="service" @click="logOut">
+				<view class="wallet-left">
+					<view class="wallet-img-box">
+						<image src="/static/images/set.png" mode=""></image>
+					</view>
+					<span class="wallet-title">退出登录</span>
+				</view>
+				<view class="wallet-right">
+					<view class="more-box">
+						<image src="/static/images/more-2.png" mode=""></image>
+					</view>
+				</view>
+			</view>
 		</viw>
 	</view>
 </template>
@@ -175,6 +188,25 @@
 						}
 					})
 				}
+			},
+			//退出登录
+			logOut(){
+				uni.showModal({
+					    title: '退出',
+					    content: '您确定要退出登录吗？',
+					    success: function (res) {
+							console.log(res)
+					        if (res.confirm) {
+					           uni.removeStorageSync('userinfo')
+								uni.navigateTo({//跳转页面
+									url:"../singIn/singIn"
+								})
+					        } else if (res.cancel) {
+					            console.log('用户点击取消');
+					        }
+					    }
+					});
+				
 			}
 		}
 	}

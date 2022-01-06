@@ -14,7 +14,7 @@
 					<image src="/static/images/shougong.png" mode=""></image>
 				</view>
 				<span class="status-title">
-					收工
+					{{title?title:'收工'}}
 				</span>
 			</view>
 		</view>
@@ -31,55 +31,79 @@
 
 <script>
 	export default {
-		props:['userData','UnreadMessage'],
+		props: ['userData', 'UnreadMessage', 'title'],
 		data() {
 			return {
-				
+
 			};
 		},
 		onLoad() {
 
 		},
-		methods:{
-			editStatus(){
-				//更改骑手状态
-				uni.request({
-					url: "http://test.qd-happy.com/app_service",
-					method: "POST",
-					header: {
-						'Content-Type': "multipart/form-data",
-					},
-					data: {
-						interface: "users_upWorkingStatus",
+		methods: {
+			editStatus() {
+				if (this.title == '开始接单') {
+					uni.request({
+						url: "http://test.qd-happy.com/app_service",
+						method: "POST",
+						header: {
+							'Content-Type': "multipart/form-data",
+						},
 						data: {
-							user_id: this.userData.user_id,
-							up_status: 2
-						}
-					},
-					success: (res) => {
-						console.log(res.data)
-						if (res.data.error_code === '000000') {
+							interface: "users_upWorkingStatus",
+							data: {
+								user_id: this.userData.user_id,
+								up_status: 1
+							}
+						},
+						success: (res) => {
+							console.log(res.data)
 							uni.navigateTo({
-								url: '/pages/finishWork/finishWork'
-							});
-						} else {
-							uni.showModal({
-								title: '温馨提示',
-								content: res.data.code_message,
-								success: function (res) {
-									
-								}
-							});
+								url: '/pages/orderTaking/orderTaking'
+							})
 						}
-					}
-				})
+
+					})
+				} else {
+					//更改骑手状态
+					uni.request({
+						url: "http://test.qd-happy.com/app_service",
+						method: "POST",
+						header: {
+							'Content-Type': "multipart/form-data",
+						},
+						data: {
+							interface: "users_upWorkingStatus",
+							data: {
+								user_id: this.userData.user_id,
+								up_status: 2
+							}
+						},
+						success: (res) => {
+							console.log(res.data)
+							if (res.data.error_code === '000000') {
+								uni.navigateTo({
+									url: '/pages/finishWork/finishWork'
+								});
+							} else {
+								uni.showModal({
+									title: '温馨提示',
+									content: res.data.code_message,
+									success: function(res) {
+
+									}
+								});
+							}
+						}
+					})
+				}
 			}
 		}
 	}
 </script>
 
 <style>
-	.nav-box{
+	.nav-box {
 		width: 100%;
 		height: 84px;
 		background-color: #308bd1;
@@ -87,7 +111,8 @@
 		flex-direction: row;
 		justify-content: space-around;
 	}
-	.nav-item{
+
+	.nav-item {
 		width: 22%;
 		height: 44px;
 		margin-top: 30px;
@@ -96,7 +121,8 @@
 		align-items: center;
 		justify-content: flex-start;
 	}
-	.nav-center{
+
+	.nav-center {
 		width: 30%;
 		height: 44px;
 		margin-top: 30px;
@@ -105,22 +131,26 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.head-img{
+
+	.head-img {
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
 		overflow: hidden;
 	}
-	.head-img>image{
+
+	.head-img>image {
 		width: 100%;
 		height: 100%;
 	}
-	.nav-name{
+
+	.nav-name {
 		font-size: 12px;
 		color: #fff;
 		padding-left: 10px;
 	}
-	.nav-status{
+
+	.nav-status {
 		width: 94px;
 		height: 29px;
 		border: 1px solid #fff;
@@ -130,29 +160,35 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.status-img{
+
+	.status-img {
 		width: 19px;
 		height: 17px;
 	}
-	.status-img>image{
+
+	.status-img>image {
 		width: 100%;
 		height: 100%;
 	}
-	.status-title{
+
+	.status-title {
 		font-size: 15px;
 		color: #fff;
 		padding-left: 10px;
 	}
-	.message-box{
+
+	.message-box {
 		width: 17px;
 		height: 21px;
 		z-index: 19;
 	}
-	.message-box>image{
+
+	.message-box>image {
 		width: 100%;
 		height: 100%;
 	}
-	.nav-right{
+
+	.nav-right {
 		width: 22%;
 		height: 44px;
 		margin-top: 30px;
@@ -162,7 +198,8 @@
 		justify-content: flex-end;
 		position: relative;
 	}
-	.message-sup{
+
+	.message-sup {
 		width: 15px;
 		height: 15px;
 		background-color: red;
